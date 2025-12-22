@@ -2,6 +2,7 @@ import {  NodeConnectionTypes, type INodeType, type INodeTypeDescription } from 
 import { machineDescription } from './resources/machine';
 import { advancedQueryDescription } from './resources/advancedQuery';
 import { exposureDescription } from './resources/exposure';
+import { machineActionsDescription } from './resources/machineAction';
 
 export class Msdefender implements INodeType {
 	description: INodeTypeDescription = {
@@ -80,6 +81,7 @@ export class Msdefender implements INodeType {
 			...machineDescription,
 			...advancedQueryDescription,
 			...exposureDescription,
+			...machineActionsDescription,
 		],
 	};
 }

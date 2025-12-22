@@ -1,6 +1,7 @@
 import {  NodeConnectionTypes, type INodeType, type INodeTypeDescription } from 'n8n-workflow';
 import { machineDescription } from './resources/machine';
 import { advancedQueryDescription } from './resources/advancedQuery';
+import { exposureDescription } from './resources/exposure';
 
 export class Msdefender implements INodeType {
 	description: INodeTypeDescription = {
@@ -65,11 +66,16 @@ export class Msdefender implements INodeType {
 						name: 'Machine',
 						value: 'machine',
 					},
+					{
+						name: 'Exposure Score',
+						value: 'exposure',
+					},
 				],
 				default: 'advancedQuery',
 			},
 			...machineDescription,
 			...advancedQueryDescription,
+			...exposureDescription,
 		],
 	};
 }

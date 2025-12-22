@@ -1,12 +1,15 @@
 import {  NodeConnectionTypes, type INodeType, type INodeTypeDescription } from 'n8n-workflow';
-import { userDescription } from './resources/device';
+import { machineDescription } from './resources/machine';
 import { advancedQueryDescription } from './resources/advancedQuery';
 
 export class Msdefender implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Microsoft Defender API',
 		name: 'msdefender',
-		icon: { light: 'file:../../icons/ms-defender.svg', dark: 'file:../../icons/ms-defender.dark.svg' },
+		icon: {
+			light: 'file:../../icons/ms-defender.svg',
+			dark: 'file:../../icons/ms-defender.dark.svg',
+		},
 		group: ['transform'],
 		version: 1,
 		subtitle: '={{$parameter["operation"] + ": " + $parameter["resource"]}}',
@@ -59,13 +62,13 @@ export class Msdefender implements INodeType {
 						value: 'advancedQuery',
 					},
 					{
-						name: 'Device',
-						value: 'device',
+						name: 'Machine',
+						value: 'machine',
 					},
 				],
 				default: 'advancedQuery',
 			},
-			...userDescription,
+			...machineDescription,
 			...advancedQueryDescription,
 		],
 	};

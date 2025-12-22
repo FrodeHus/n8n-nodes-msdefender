@@ -30,6 +30,8 @@ Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes
 - Exposure
   - Get Current Exposure Score
   - Get Exposure Score By Machine Groups.
+- Machine Actions
+  - Isolate Machine
 
 ## Credentials
 

@@ -1,8 +1,9 @@
 # n8n-nodes-msdefender
 
-This is an n8n community node. It lets you use _app/service name_ in your n8n workflows.
+This is an n8n community node. It lets you use Microsoft Defender in your n8n workflows.
 
-_App/service name_ is _one or two sentences describing the service this node integrates with_.
+Microsoft Defender is a comprehensive security solution that helps protect your devices and data from threats.
+This node allows you to interact with the Microsoft Defender API to perform various security operations, such as managing devices, retrieving threat intelligence, and more.
 
 [n8n](https://n8n.io/) is a [fair-code licensed](https://docs.n8n.io/sustainable-use-license/) workflow automation platform.
 

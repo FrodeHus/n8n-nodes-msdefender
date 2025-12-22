@@ -70,6 +70,10 @@ export class Msdefender implements INodeType {
 						name: 'Exposure Score',
 						value: 'exposure',
 					},
+					{
+						name: 'Machine Action',
+						value: 'machineAction',
+					},
 				],
 				default: 'advancedQuery',
 			},

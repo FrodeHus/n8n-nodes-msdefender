@@ -5,40 +5,40 @@ const showOnlyForExposure = {
 };
 
 export const exposureDescription: INodeProperties[] = [
-    {
-        displayName: 'Operation',
-        name: 'operation',
-        type: 'options',
-        noDataExpression: true,
-        displayOptions: {
-            show: showOnlyForExposure,
-        },
-        options: [
-            {
-                name: 'Current Exposure Score',
-                value: 'currentExposureScore',
-                action: 'Get current exposure score',
-                description: 'Get the exposure score',
-                routing: {
-                    request: {
-                        method: 'GET',
-                        url: '/api/exposureScore',
-                    },
-                },
-            },
-            {
-                name: 'Get Many',
-                value: 'getByMachineGroups',
-                action: 'Get many exposure scores',
-                description: 'Retrieve exposure scores by machine groups',
-                routing: {
-                    request: {
-                        method: 'GET',
-                        url: '/api/exposureScore/ByMachineGroups',
-                    },
-                },
-            }
-        ],
-        default: 'currentExposureScore',
-    },
+	{
+		displayName: 'Operation',
+		name: 'operation',
+		type: 'options',
+		noDataExpression: true,
+		displayOptions: {
+			show: showOnlyForExposure,
+		},
+		options: [
+			{
+				name: 'Current Exposure Score',
+				value: 'currentExposureScore',
+				action: 'Get current exposure score',
+				description: 'Get the exposure score',
+				routing: {
+					request: {
+						method: 'GET',
+						url: '/api/exposureScore',
+					},
+				},
+			},
+			{
+				name: 'Get By Machine Groups',
+				value: 'getByMachineGroups',
+				action: 'Get many exposure scores',
+				description: 'Retrieve exposure scores by machine groups',
+				routing: {
+					request: {
+						method: 'GET',
+						url: '/api/exposureScore/ByMachineGroups',
+					},
+				},
+			},
+		],
+		default: 'currentExposureScore',
+	},
 ];

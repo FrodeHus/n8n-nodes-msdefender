@@ -12,7 +12,9 @@ export const getAllMachineDescription: INodeProperties[] = [
 		type: 'number',
 		default: 50,
 		displayOptions: {
-			show: showOnlyForGetAllMachine,
+			show: {
+				...showOnlyForGetAllMachine,
+			},
 		},
 		typeOptions: {
 			minValue: 1,

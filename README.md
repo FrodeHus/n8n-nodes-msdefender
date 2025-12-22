@@ -1,4 +1,7 @@
-# n8n-nodes-msdefender
+# n8n-nodes-msdefender 
+
+[![CI](https://github.com/FrodeHus/n8n-nodes-msdefender/actions/workflows/ci.yml/badge.svg)](https://github.com/FrodeHus/n8n-nodes-msdefender/actions/workflows/ci.yml)
+
 
 This is an n8n community node. It lets you use Microsoft Defender in your n8n workflows.
 

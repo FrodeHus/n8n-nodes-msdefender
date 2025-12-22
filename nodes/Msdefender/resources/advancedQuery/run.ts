@@ -13,7 +13,7 @@ export const advancedQueryRunDescription: INodeProperties[] = [
 		type: 'string',
 		displayOptions: {
 			show: {
-				...showOnlyForAdvancedQueryRun
+				...showOnlyForAdvancedQueryRun,
 			},
 		},
 		default: 'DeviceInfo | take 5',
@@ -21,8 +21,8 @@ export const advancedQueryRunDescription: INodeProperties[] = [
 			send: {
 				type: 'body',
 				property: 'Query',
-			}
+			},
 		},
 		description: 'KQL query to run',
-	}
+	},
 ];

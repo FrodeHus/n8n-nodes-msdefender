@@ -1,8 +1,8 @@
 import type { INodeProperties } from 'n8n-workflow';
 
 const showOnlyForIsolateDevice = {
-	operation: ['isolateDevice'],
-	resource: ['device'],
+	operation: ['isolate'],
+	resource: ['machineAction'],
 };
 
 export const isolateDeviceDescription: INodeProperties[] = [
@@ -18,7 +18,7 @@ export const isolateDeviceDescription: INodeProperties[] = [
 		description: 'The ID of the device',
 		routing: {
 			send: {
-				type: 'body',
+				type: 'query',
 				property: 'deviceId',
 			},
 		},

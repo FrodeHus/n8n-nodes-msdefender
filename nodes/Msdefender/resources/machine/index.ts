@@ -1,5 +1,5 @@
 import type { INodeProperties } from 'n8n-workflow';
-import { isolateDeviceDescription } from './isolateDevice';
+import { getAllMachineDescription } from './getAll';
 
 const showOnlyForMachines = {
 	resource: ['machine'],
@@ -16,18 +16,6 @@ export const machineDescription: INodeProperties[] = [
 		},
 		options: [
 			{
-				name: 'Isolate Machine',
-				value: 'isolateMachine',
-				action: 'Isolate a machine',
-				description: 'Isolate a machine from the network',
-				routing: {
-					request: {
-						method: 'POST',
-						url: '/api/machines/isolate',
-					},
-				},
-			},
-			{
 				name: 'Get Many',
 				value: 'getAll',
 				action: 'Get many machines',
@@ -38,9 +26,9 @@ export const machineDescription: INodeProperties[] = [
 						url: '/api/machines',
 					},
 				},
-			}
+			},
 		],
-		default: 'isolateMachine',
+		default: 'getAll',
 	},
-	...isolateDeviceDescription,
+	...getAllMachineDescription,
 ];

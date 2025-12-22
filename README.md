@@ -24,27 +24,43 @@ Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes
 
 ## Operations
 
-_List the operations supported by your node._
+- Advanced Query: Run advanced queries against Microsoft Defender.
+- Machine: Manage and retrieve information about devices.
+  - Get Many: Retrieve many machines.
+- Exposure
+  - Get Current Exposure Score
+  - Get Exposure Score By Machine Groups.
 
 ## Credentials
 
-_If users need to authenticate with the app/service, provide details here. You should include prerequisites (such as signing up with the service), available authentication methods, and how to set them up._
+To use this node, you need to set up an Entra ID (Azure AD) application and obtain the necessary credentials to access the Microsoft Defender API.
+
+1. Register an application in the [Azure Portal](https://portal.azure.com/).
+2. Assign the required API permissions to the application for Microsoft Defender.
+    - Application permissions: `AdvancedQuery.Read.All`, `Machine.Read.All`, `Score.Read.All`
+3. Grant admin consent for the permissions.
+4. Generate a client secret for the application.
+5. Note down the Application (client) ID, Directory (tenant) ID, and client secret.
+
+When configuring the Microsoft Defender node in n8n, use the following credentials:
+- **Client ID**: The Application (client) ID from your Azure AD application.
+- **Client Secret**: The client secret generated for your Azure AD application.
+- **Access Token URL**: https://login.microsoftonline.com/<your-tenant-id>/oauth2/v2.0/token
+
+
 
 ## Compatibility
 
-_State the minimum n8n version, as well as which versions you test against. You can also include any known version incompatibility issues._
+This node is compatible with latest n8n versions.
 
 ## Usage
 
-_This is an optional section. Use it to help users with any difficult or confusing aspects of the node._
-
-_By the time users are looking for community nodes, they probably already know n8n basics. But if you expect new users, you can link to the [Try it out](https://docs.n8n.io/try-it-out/) documentation to help them get started._
+[Try it out](https://docs.n8n.io/try-it-out/)
 
 ## Resources
 
 * [n8n community nodes documentation](https://docs.n8n.io/integrations/#community-nodes)
-* _Link to app/service documentation._
 
 ## Version history
 
-_This is another optional section. If your node has multiple versions, include a short description of available versions and what changed, as well as any compatibility impact._
+- 0.1.0 Initial release with Advanced Query and Machine operations.

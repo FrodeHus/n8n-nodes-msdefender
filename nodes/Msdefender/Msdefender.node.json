@@ -3,9 +3,7 @@
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": [
-		"Security",
-		"SOAR",
-		"SIEM"
+		"Development"
 	],
 	"resources": {
 		"credentialDocumentation": [

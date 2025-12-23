@@ -27,6 +27,7 @@ Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes
 - Advanced Query: Run advanced queries against Microsoft Defender.
 - Machine: Manage and retrieve information about devices.
   - Add Or Remove Tag For Machine
+  - Find By Tag
   - Get Many: Retrieve many machines.
   - Get Security Recommendations For Machine
   - List Installed Software For Machine

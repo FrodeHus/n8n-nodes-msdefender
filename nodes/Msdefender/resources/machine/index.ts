@@ -3,6 +3,7 @@ import { getAllMachineDescription } from './getAll';
 import { listSoftwareMachineDescription } from './listSoftware';
 import { getSecurityRecommendationsDescription } from './getSecurityRecommendations';
 import { addOrRemoveTagDescription } from './addOrRemoveTag';
+import { findByTagDescription } from './findByTag';
 
 const showOnlyForMachines = {
 	resource: ['machine'],
@@ -23,6 +24,12 @@ export const machineDescription: INodeProperties[] = [
 				value: 'addOrRemoveTag',
 				action: 'Add or remove tag on a machine',
 				description: 'Adds or removes a tag from a specified machine ID',
+			},
+			{
+				name: 'Find By Tag',
+				value: 'findByTag',
+				action: 'Find machines by tag',
+				description: 'Retrieves a list of machines associated with a specific tag',
 			},
 			{
 				name: 'Get Many',
@@ -52,6 +59,7 @@ export const machineDescription: INodeProperties[] = [
 		default: 'getAllMachines',
 	},
 	...addOrRemoveTagDescription,
+	...findByTagDescription,
 	...getAllMachineDescription,
 	...getSecurityRecommendationsDescription,
 	...listSoftwareMachineDescription,

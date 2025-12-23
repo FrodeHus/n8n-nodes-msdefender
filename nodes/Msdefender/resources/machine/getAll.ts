@@ -7,6 +7,25 @@ const showOnlyForGetAllMachine = {
 
 export const getAllMachineDescription: INodeProperties[] = [
 	{
+		displayName: 'Filter',
+		name: 'filter',
+		type: 'string',
+		default: '',
+		placeholder: "computerDnsName eq 'laptop01' or computerDnsName eq 'desktop01'",
+		description: 'The filter expression',
+		displayOptions: {
+			show: {
+				...showOnlyForGetAllMachine,
+			},
+		},
+		routing: {
+			send: {
+				type: 'query',
+				property: '$filter',
+			},
+		},
+	},
+	{
 		displayName: 'Limit',
 		name: 'limit',
 		type: 'number',
@@ -60,6 +79,29 @@ export const getAllMachineDescription: INodeProperties[] = [
 						},
 					},
 				},
+			},
+		},
+	},
+	{
+		displayName: 'Skip',
+		name: 'skip',
+		type: 'number',
+		displayOptions: {
+			show: {
+				...showOnlyForGetAllMachine,
+				returnAll: [false],
+			},
+		},
+		typeOptions: {
+			minValue: 1,
+			maxValue: 1000,
+		},
+		default: 50,
+		description: 'Number of results to skip',
+		routing: {
+			send: {
+				type: 'query',
+				property: '$skip',
 			},
 		},
 	},

@@ -57,6 +57,8 @@ To use this node, you need to set up an Entra ID (Azure AD) application and obta
 4. Generate a client secret for the application.
 5. Note down the Application (client) ID, Directory (tenant) ID, and client secret.
 
+![Entra ID App Permissions](/images/app-permissions.png)
+
 When configuring the Microsoft Defender node in n8n, use the following credentials:
 - **Client ID**: The Application (client) ID from your Azure AD application.
 - **Client Secret**: The client secret generated for your Azure AD application.

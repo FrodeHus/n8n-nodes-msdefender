@@ -1,11 +1,11 @@
 import type { INodeProperties } from 'n8n-workflow';
 
-const showOnlyForIsolateDevice = {
-	operation: ['isolate'],
-	resource: ['machineAction'],
+const showOnlyForRemoveFromIsolation = {
+    operation: ['removeFromIsolation'],
+    resource: ['machineAction'],
 };
 
-export const isolateDeviceDescription: INodeProperties[] = [
+export const removeFromIsolationDescription: INodeProperties[] = [
 	{
 		displayName: 'Device ID',
 		name: 'deviceId',
@@ -13,7 +13,7 @@ export const isolateDeviceDescription: INodeProperties[] = [
 		default: '',
 		required: true,
 		displayOptions: {
-			show: showOnlyForIsolateDevice,
+			show: showOnlyForRemoveFromIsolation,
 		},
 		description: 'The ID of the device',
 		options: [
@@ -29,7 +29,7 @@ export const isolateDeviceDescription: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: '=/api/machines/{{ $parameter.machineId }}/isolate',
+				url: '=/api/machines/{{ $parameter.machineId }}/unisolate',
 			},
 		},
 	},

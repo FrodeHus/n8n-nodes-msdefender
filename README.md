@@ -10,13 +10,13 @@ This node allows you to interact with the Microsoft Defender API to perform vari
 
 [n8n](https://n8n.io/) is a [fair-code licensed](https://docs.n8n.io/sustainable-use-license/) workflow automation platform.
 
-[Installation](#installation)
-[Operations](#operations)
-[Credentials](#credentials)
-[Compatibility](#compatibility)
-[Usage](#usage)
-[Resources](#resources)
-[Version history](#version-history)
+[Installation](#installation)  
+[Operations](#operations)  
+[Credentials](#credentials)  
+[Compatibility](#compatibility)  
+[Usage](#usage)  
+[Resources](#resources)  
+[Version history](#version-history)  
 
 ## Installation
 
@@ -27,11 +27,21 @@ Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes
 - Advanced Query: Run advanced queries against Microsoft Defender.
 - Machine: Manage and retrieve information about devices.
   - Get Many: Retrieve many machines.
+  - List Installed Software For Machine
 - Exposure
   - Get Current Exposure Score
   - Get Exposure Score By Machine Groups.
 - Machine Actions
   - Isolate Machine
+  - Release Machine from Isolation
+  - List Machine Actions
+  - Offboard Machine
+  - Cancel Machine Action
+  - Run Antivirus Scan
+- Vulnerability
+  - Get All Vulnerabilities
+  - Get Machines By CVE
+  - Get By Machine And Software
 
 ## Credentials
 

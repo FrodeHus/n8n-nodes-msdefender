@@ -48,7 +48,7 @@ export const getAllMachineDescription: INodeProperties[] = [
 				paginate: '={{ $value }}',
 				type: 'query',
 				property: '$top',
-				value: '100',
+				value: '={{parameter.limit}}',
 			},
 			operations: {
 				pagination: {

@@ -2,6 +2,7 @@ import type { INodeProperties } from 'n8n-workflow';
 import { getAllMachineDescription } from './getAll';
 import { listSoftwareMachineDescription } from './listSoftware';
 import { getSecurityRecommendationsDescription } from './getSecurityRecommendations';
+import { addOrRemoveTagDescription } from './addOrRemoveTag';
 
 const showOnlyForMachines = {
 	resource: ['machine'],
@@ -17,6 +18,12 @@ export const machineDescription: INodeProperties[] = [
 			show: showOnlyForMachines,
 		},
 		options: [
+			{
+				name: 'Add Or Remove Tag',
+				value: 'addOrRemoveTag',
+				action: 'Add or remove tag on a machine',
+				description: 'Adds or removes a tag from a specified machine ID',
+			},
 			{
 				name: 'Get Many',
 				value: 'getAllMachines',
@@ -44,6 +51,7 @@ export const machineDescription: INodeProperties[] = [
 		],
 		default: 'getAllMachines',
 	},
+	...addOrRemoveTagDescription,
 	...getAllMachineDescription,
 	...getSecurityRecommendationsDescription,
 	...listSoftwareMachineDescription,

@@ -25,6 +25,8 @@ Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes
 ## Operations
 
 - Advanced Query: Run advanced queries against Microsoft Defender.
+- Alert: Manage and retrieve information about security alerts.
+  - Get Many: Retrieve many alerts.
 - Machine: Manage and retrieve information about devices.
   - Add Or Remove Tag For Machine
   - Find By Tag

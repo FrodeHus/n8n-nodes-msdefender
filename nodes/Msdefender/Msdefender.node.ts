@@ -4,6 +4,7 @@ import { advancedQueryDescription } from './resources/advancedQuery';
 import { exposureDescription } from './resources/exposure';
 import { machineActionsDescription } from './resources/machineAction';
 import { vulnerabilityDescription } from './vulnerability';
+import { alertDescription } from './resources/alert';
 
 export class Msdefender implements INodeType {
 	description: INodeTypeDescription = {
@@ -65,6 +66,10 @@ export class Msdefender implements INodeType {
 						value: 'advancedQuery',
 					},
 					{
+						name: 'Alert',
+						value: 'alert',
+					},
+					{
 						name: 'Exposure Score',
 						value: 'exposure',
 					},
@@ -83,6 +88,7 @@ export class Msdefender implements INodeType {
 				],
 				default: 'advancedQuery',
 			},
+			...alertDescription,
 			...machineDescription,
 			...advancedQueryDescription,
 			...exposureDescription,

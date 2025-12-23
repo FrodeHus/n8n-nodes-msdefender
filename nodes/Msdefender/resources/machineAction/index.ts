@@ -4,6 +4,7 @@ import { runAntivirusScanDescription } from './runAntivirusScan';
 import { removeFromIsolationDescription } from './releaseFromIsolation';
 import { listMachineActionsDescription } from './listMachineActions';
 import { cancelMachineActionDescription } from './cancelMachineAction';
+import { offboardMachineDescription } from './offboardMachine';
 
 const showOnlyForMachineActions = {
 	resource: ['machineAction'],
@@ -39,9 +40,15 @@ export const machineActionsDescription: INodeProperties[] = [
 				routing: {
 					request: {
 						method: 'GET',
-						url: 'api/machineactions',
+						url: '/api/machineactions',
 					},
 				},
+			},
+			{
+				name: 'Offboard Machine',
+				value: 'offboardMachine',
+				action: 'Offboard a machine',
+				description: 'Offboard a machine from Microsoft Defender for Endpoint',
 			},
 			{
 				name: 'Remove From Isolation',
@@ -61,6 +68,7 @@ export const machineActionsDescription: INodeProperties[] = [
 	...cancelMachineActionDescription,
 	...isolateDeviceDescription,
 	...listMachineActionsDescription,
+	...offboardMachineDescription,
 	...removeFromIsolationDescription,
 	...runAntivirusScanDescription,
 ];

@@ -8,6 +8,25 @@ const showOnlyForListSoftwareMachine = {
 
 export const listSoftwareMachineDescription: INodeProperties[] = [
 	{
+		displayName: 'Machine ID',
+		name: 'machineId',
+		type: 'string',
+		displayOptions: {
+			show: {
+				...showOnlyForListSoftwareMachine,
+			},
+		},
+		default: '',
+		required: true,
+		description: 'The ID of the machine to list software for',
+		routing: {
+			request: {
+				method: 'GET',
+				url: '=/api/machines/{{ $parameter.machineId }}/software',
+			},
+		},
+	},
+	{
 		displayName: 'Limit',
 		name: 'limit',
 		type: 'number',
@@ -37,7 +56,11 @@ export const listSoftwareMachineDescription: INodeProperties[] = [
 		displayName: 'Return All',
 		name: 'returnAll',
 		type: 'boolean',
-
+		displayOptions: {
+			show: {
+				...showOnlyForListSoftwareMachine,
+			},
+		},
 		default: false,
 		description: 'Whether to return all results or only up to a given limit',
 		routing: {

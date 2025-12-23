@@ -33,22 +33,6 @@ export const machineDescription: INodeProperties[] = [
 				value: 'listSoftware',
 				action: 'List software on a machine',
 				description: 'Retrieves a collection of installed software related to a given machine ID',
-				options: [
-					{
-						displayName: 'Machine ID',
-						name: 'machineId',
-						type: 'string',
-						default: '',
-						required: true,
-						description: 'The ID of the machine to list software for',
-					},
-				],
-				routing: {
-					request: {
-						method: 'GET',
-						url: '/api/machines/{{ $value }}/software',
-					},
-				},
 			},
 		],
 		default: 'getAll',

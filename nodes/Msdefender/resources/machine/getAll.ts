@@ -1,5 +1,4 @@
 import type { INodeProperties } from 'n8n-workflow';
-import { getNextODataLink } from '../../shared/utils';
 
 const showOnlyForGetAllMachine = {
 	operation: ['getAll'],
@@ -37,12 +36,16 @@ export const getAllMachineDescription: INodeProperties[] = [
 		displayName: 'Return All',
 		name: 'returnAll',
 		type: 'boolean',
-
+		displayOptions: {
+			show: {
+				...showOnlyForGetAllMachine,
+			},
+		},
 		default: false,
 		description: 'Whether to return all results or only up to a given limit',
 		routing: {
 			send: {
-				paginate: '={{$value}}',
+				paginate: '={{ $value }}',
 				type: 'query',
 				property: '$top',
 				value: '100',
@@ -51,9 +54,9 @@ export const getAllMachineDescription: INodeProperties[] = [
 				pagination: {
 					type: 'generic',
 					properties: {
-						continue: `={{ !!(${getNextODataLink.toString()})($value) }}`,
+						continue: `={{ !!($response.body['@odata.nextLink']) }}`,
 						request: {
-							url: `={{ (${getNextODataLink.toString()})($value) }}`,
+							url: `={{ $request.url }}`,
 						},
 					},
 				},

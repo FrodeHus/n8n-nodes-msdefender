@@ -22,18 +22,18 @@ export const machineActionsDescription: INodeProperties[] = [
 				description: 'Isolate a device from the network',
 				options: [
 					{
-						displayName: 'Device ID',
-						name: 'deviceId',
+						displayName: 'Machine ID',
+						name: 'machineId',
 						type: 'string',
 						default: '',
 						required: true,
-						description: 'The ID of the device to isolate',
+						description: 'The ID of the machine to isolate',
 					},
 				],
 				routing: {
 					request: {
 						method: 'POST',
-						url: '/api/machines/{{$value}}/isolate',
+						url: '=/api/machines/{{ $parameter.machineId }}/isolate',
 					},
 				},
 			},

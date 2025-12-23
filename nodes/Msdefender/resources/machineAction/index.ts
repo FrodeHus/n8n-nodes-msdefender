@@ -3,6 +3,7 @@ import { isolateDeviceDescription } from './isolateDevice';
 import { runAntivirusScanDescription } from './runAntivirusScan';
 import { removeFromIsolationDescription } from './releaseFromIsolation';
 import { listMachineActionsDescription } from './listMachineActions';
+import { cancelMachineActionDescription } from './cancelMachineAction';
 
 const showOnlyForMachineActions = {
 	resource: ['machineAction'],
@@ -18,6 +19,12 @@ export const machineActionsDescription: INodeProperties[] = [
 			show: showOnlyForMachineActions,
 		},
 		options: [
+			{
+				name: 'Cancel Machine Action',
+				value: 'cancelMachineAction',
+				action: 'Cancel machine action',
+				description: "Cancel an already launched machine action that isn't yet in final state",
+			},
 			{
 				name: 'Isolate Machine',
 				value: 'isolate',
@@ -51,6 +58,7 @@ export const machineActionsDescription: INodeProperties[] = [
 		],
 		default: 'isolate',
 	},
+	...cancelMachineActionDescription,
 	...isolateDeviceDescription,
 	...listMachineActionsDescription,
 	...removeFromIsolationDescription,

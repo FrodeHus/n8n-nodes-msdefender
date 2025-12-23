@@ -1,4 +1,4 @@
-import type { INodeProperties } from 'n8n-workflow';
+import type { IExecuteSingleFunctions, IHttpRequestOptions, INodeProperties } from 'n8n-workflow';
 
 const showOnlyForGetAllMachine = {
 	operation: ['getAllMachines'],
@@ -22,6 +22,16 @@ export const getAllMachineDescription: INodeProperties[] = [
 			send: {
 				type: 'query',
 				property: '$filter',
+				preSend: [
+					async function (
+						this: IExecuteSingleFunctions,
+						requestOptions: IHttpRequestOptions,
+					): Promise<IHttpRequestOptions> {
+						if (requestOptions.qs && this.getNodeParameter('filter', '') === '')
+							delete requestOptions.qs['$filter'];
+						return requestOptions;
+					},
+				],
 			},
 		},
 	},
@@ -93,10 +103,10 @@ export const getAllMachineDescription: INodeProperties[] = [
 			},
 		},
 		typeOptions: {
-			minValue: 1,
+			minValue: 0,
 			maxValue: 1000,
 		},
-		default: 50,
+		default: 0,
 		description: 'Number of results to skip',
 		routing: {
 			send: {

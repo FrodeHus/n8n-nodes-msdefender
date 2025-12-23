@@ -18,7 +18,7 @@ export const machineDescription: INodeProperties[] = [
 		options: [
 			{
 				name: 'Get Many',
-				value: 'getAll',
+				value: 'getAllMachines',
 				action: 'Get many machines',
 				description: 'Retrieve many machines',
 				routing: {
@@ -35,7 +35,7 @@ export const machineDescription: INodeProperties[] = [
 				description: 'Retrieves a collection of installed software related to a given machine ID',
 			},
 		],
-		default: 'getAll',
+		default: 'getAllMachines',
 	},
 	...getAllMachineDescription,
 	...listSoftwareMachineDescription,

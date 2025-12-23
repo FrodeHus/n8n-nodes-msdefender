@@ -1,15 +1,45 @@
 import { INodeProperties } from 'n8n-workflow';
 import { getNextODataLink } from './utils';
 
+const showOnlyForOdataOperations = {
+	operation: ['getAllMachines', 'listSoftware', 'getAllVulnerabilities'],
+	resource: ['machine', 'vulnerability'],
+};
+
 export const commonOdataProperties: INodeProperties[] = [
+	{
+		displayName: 'Limit',
+		name: 'limit',
+		type: 'number',
+		default: 50,
+		displayOptions: {
+			show: {
+				...showOnlyForOdataOperations,
+				returnAll: [false],
+			},
+		},
+		typeOptions: {
+			minValue: 1,
+			maxValue: 1000,
+		},
+		description: 'Max number of results to return',
+		routing: {
+			send: {
+				type: 'query',
+				property: '$top',
+			},
+			output: {
+				maxResults: '={{$value}}',
+			},
+		},
+	},
 	{
 		displayName: 'Return All',
 		name: 'returnAll',
 		type: 'boolean',
 		displayOptions: {
 			show: {
-				resource: ['machine'],
-				operation: ['getAll', 'listSoftware'],
+				...showOnlyForOdataOperations,
 			},
 		},
 		default: true,
@@ -25,12 +55,35 @@ export const commonOdataProperties: INodeProperties[] = [
 				pagination: {
 					type: 'generic',
 					properties: {
-						continue: `={{ !!(${getNextODataLink.toString()})($value) }}`,
+						continue: `={{ !!(${getNextODataLink.toString()})($response.body) }}`,
 						request: {
-							url: `={{ (${getNextODataLink.toString()})($value) }}`,
+							url: `={{ (${getNextODataLink.toString()})($response.body) ?? $request.url }}`,
 						},
 					},
 				},
+			},
+		},
+	},
+	{
+		displayName: 'Skip',
+		name: 'skip',
+		type: 'number',
+		displayOptions: {
+			show: {
+				...showOnlyForOdataOperations,
+				returnAll: [false],
+			},
+		},
+		typeOptions: {
+			minValue: 1,
+			maxValue: 1000,
+		},
+		default: 50,
+		description: 'Number of results to skip',
+		routing: {
+			send: {
+				type: 'query',
+				property: '$skip',
 			},
 		},
 	},

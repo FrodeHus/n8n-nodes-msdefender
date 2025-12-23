@@ -1,7 +1,7 @@
 import type { INodeProperties } from 'n8n-workflow';
 
 const showOnlyForGetAllMachine = {
-	operation: ['getAll'],
+	operation: ['getAllMachines'],
 	resource: ['machine'],
 };
 

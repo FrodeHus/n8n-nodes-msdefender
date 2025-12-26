@@ -7,8 +7,8 @@ const showOnlyForRemoveFromIsolation = {
 
 export const removeFromIsolationDescription: INodeProperties[] = [
 	{
-		displayName: 'Device ID',
-		name: 'deviceId',
+		displayName: 'Machine ID',
+		name: 'machineId',
 		type: 'string',
 		default: '',
 		required: true,
@@ -16,20 +16,27 @@ export const removeFromIsolationDescription: INodeProperties[] = [
 			show: showOnlyForRemoveFromIsolation,
 		},
 		description: 'The ID of the device',
-		options: [
-			{
-				displayName: 'Machine ID',
-				name: 'machineId',
-				type: 'string',
-				default: '',
-				required: true,
-				description: 'The ID of the machine to isolate',
-			},
-		],
+
 		routing: {
 			request: {
 				method: 'POST',
 				url: '=/api/machines/{{ $parameter.machineId }}/unisolate',
+			},
+		},
+	},
+	{
+		displayName: 'Comment',
+		name: 'comment',
+		type: 'string',
+		default: '',
+		displayOptions: {
+			show: showOnlyForRemoveFromIsolation,
+		},
+		description: 'Comments regarding the isolation action',
+		routing: {
+			send: {
+				type: 'body',
+				property: 'Comment',
 			},
 		},
 	},

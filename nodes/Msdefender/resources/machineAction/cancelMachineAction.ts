@@ -7,11 +7,11 @@ const showOnlyForCancelMachineAction = {
 
 export const cancelMachineActionDescription: INodeProperties[] = [
 	{
-		displayName: 'Machine ID',
-		name: 'machineId',
+		displayName: 'Machine Action ID',
+		name: 'machineActionId',
 		type: 'string',
-        default: '',
-        required: true,
+		default: '',
+		required: true,
 		displayOptions: {
 			show: {
 				...showOnlyForCancelMachineAction,
@@ -19,7 +19,24 @@ export const cancelMachineActionDescription: INodeProperties[] = [
 		},
 		routing: {
 			request: {
-				url: '=/api/machineactions/{{ parameters.machineId }}/cancel',
+				method: 'POST',
+				url: '=/api/machineactions/{{ $parameter.machineActionId }}/cancel',
+			},
+		},
+	},
+	{
+		displayName: 'Comment',
+		name: 'comment',
+		type: 'string',
+		default: '',
+		displayOptions: {
+			show: showOnlyForCancelMachineAction,
+		},
+		description: 'Comments regarding the isolation action',
+		routing: {
+			send: {
+				type: 'body',
+				property: 'Comment',
 			},
 		},
 	},

@@ -19,8 +19,8 @@ export const remediationDescription: INodeProperties[] = [
 		options: [
 			{
 				name: 'Get Remediation Activities',
-				value: 'remediationActivities',
 				action: 'Get remediation activities',
+				value: 'remediationActivities',
 				description: 'Get all remediation activities',
 				routing: {
 					request: {
@@ -31,14 +31,14 @@ export const remediationDescription: INodeProperties[] = [
 			},
 			{
 				name: 'Get Remediation Activity',
-				value: 'remediationActivityId',
 				action: 'Get a remediation activity',
+				value: 'remediationActivityId',
 				description: 'Get a specific remediation activity by ID',
 			},
 			{
 				name: 'Get Exposed Devices by Remediation',
-				value: 'getExposedDevicesByRemediation',
 				action: 'Get exposed devices by remediation activity',
+				value: 'getExposedDevicesByRemediation',
 				description: 'Get devices exposed in a specific remediation activity by ID',
 			},
 		],

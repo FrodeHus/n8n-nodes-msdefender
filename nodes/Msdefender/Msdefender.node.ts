@@ -82,6 +82,10 @@ export class Msdefender implements INodeType {
 						value: 'machineAction',
 					},
 					{
+						name: 'Remedation',
+						value: 'remediation',
+					},
+					{
 						name: 'Vulnerability',
 						value: 'vulnerability',
 					},

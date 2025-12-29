@@ -11,9 +11,7 @@ export const getAllAlertsDescription: INodeProperties[] = [
 		name: 'expandEvidenceDetails',
 		type: 'boolean',
 		displayOptions: {
-			show: {
-				...showOnlyForGetAllAlerts,
-			},
+			show: showOnlyForGetAllAlerts,
 		},
 		default: false,
 		description: 'Whether to expand evidence details in the alert response',
@@ -31,9 +29,7 @@ export const getAllAlertsDescription: INodeProperties[] = [
 		type: 'number',
 		default: 50,
 		displayOptions: {
-			show: {
-				...showOnlyForGetAllAlerts,
-			},
+			show: showOnlyForGetAllAlerts,
 		},
 		typeOptions: {
 			minValue: 1,
@@ -49,5 +45,5 @@ export const getAllAlertsDescription: INodeProperties[] = [
 				maxResults: '={{$value}}',
 			},
 		},
-	}
+	},
 ];

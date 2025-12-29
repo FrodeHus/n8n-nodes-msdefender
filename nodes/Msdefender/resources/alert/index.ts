@@ -1,8 +1,10 @@
 import { INodeProperties } from "n8n-workflow";
 import { getAllAlertsDescription } from './getAll';
+import { updateAlertDescription } from './updateAlert';
+import { getAlertByIdDescription } from './getAlertById';
 
 const showOnlyForAlerts = {
-    resource: ['alert'],
+	resource: ['alert'],
 };
 
 export const alertDescription: INodeProperties[] = [
@@ -12,32 +14,14 @@ export const alertDescription: INodeProperties[] = [
 		type: 'options',
 		noDataExpression: true,
 		displayOptions: {
-			show: {
-				...showOnlyForAlerts,
-			},
+			show: showOnlyForAlerts,
 		},
 		options: [
 			{
 				name: 'Get Alert',
 				action: 'Get a security alert',
-				value: 'getAlert',
+				value: 'getAlertById',
 				description: 'Get a security alert by ID',
-				options: [
-					{
-						displayName: 'Alert ID',
-						name: 'alertId',
-						type: 'string',
-						default: '',
-						required: true,
-						description: 'The ID of the alert to retrieve',
-					},
-				],
-				routing: {
-					request: {
-						method: 'GET',
-						url: '/api/alerts/{{ $parameter.alertId }}',
-					},
-				},
 			},
 			{
 				name: 'List Alerts',
@@ -51,8 +35,16 @@ export const alertDescription: INodeProperties[] = [
 					},
 				},
 			},
+			{
+				name: 'Update Alert',
+				action: 'Update a security alert',
+				value: 'updateAlert',
+				description: 'Update the status or classification of a security alert',
+			},
 		],
 		default: 'listAlerts',
+		...getAlertByIdDescription,
 		...getAllAlertsDescription,
+		...updateAlertDescription,
 	},
 ];  

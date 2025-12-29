@@ -37,8 +37,8 @@ export const remediationDescription: INodeProperties[] = [
 			},
 			{
 				name: 'Get Exposed Devices by Remediation',
-				action: 'Get exposed devices by remediation activity',
 				value: 'getExposedDevicesByRemediation',
+				action: 'Get exposed devices by remediation activity',
 				description: 'Get devices exposed in a specific remediation activity by ID',
 			},
 		],

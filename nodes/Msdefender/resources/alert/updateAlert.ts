@@ -1,4 +1,4 @@
-import { INodeProperties } from 'n8n-workflow';
+import { IExecuteSingleFunctions, IHttpRequestOptions, INodeProperties } from 'n8n-workflow';
 
 const showOnlyForUpdateAlert = {
 	operation: ['updateAlert'],
@@ -24,8 +24,38 @@ export const updateAlertDescription: INodeProperties[] = [
 		},
 	},
 	{
+		displayName: 'Assigned To',
+		name: 'assignedTo',
+		type: 'string',
+		default: '',
+		placeholder: 'someone@somewhere.com',
+		typeOptions: {
+			format: 'email',
+		},
+		displayOptions: {
+			show: showOnlyForUpdateAlert,
+		},
+		description: 'The user assigned to the alert',
+		routing: {
+			send: {
+				type: 'body',
+				property: 'AssignedTo',
+				preSend: [
+					async function (
+						this: IExecuteSingleFunctions,
+						requestOptions: IHttpRequestOptions,
+					): Promise<IHttpRequestOptions> {
+						if (requestOptions.body && this.getNodeParameter('assignedTo', '') === '')
+							delete requestOptions.body['AssignedTo'];
+						return requestOptions;
+					},
+				],
+			},
+		},
+	},
+	{
 		displayName: 'Status',
-		name: 'status',
+		name: 'Status',
 		type: 'options',
 		options: [
 			{
@@ -51,6 +81,16 @@ export const updateAlertDescription: INodeProperties[] = [
 			send: {
 				type: 'body',
 				property: 'Status',
+				preSend: [
+					async function (
+						this: IExecuteSingleFunctions,
+						requestOptions: IHttpRequestOptions,
+					): Promise<IHttpRequestOptions> {
+						if (requestOptions.body && this.getNodeParameter('Status', '') === '')
+							delete requestOptions.body['Status'];
+						return requestOptions;
+					},
+				],
 			},
 		},
 	},
@@ -81,12 +121,22 @@ export const updateAlertDescription: INodeProperties[] = [
 			send: {
 				type: 'body',
 				property: 'Classification',
+				preSend: [
+					async function (
+						this: IExecuteSingleFunctions,
+						requestOptions: IHttpRequestOptions,
+					): Promise<IHttpRequestOptions> {
+						if (requestOptions.body && this.getNodeParameter('Classification', '') === '')
+							delete requestOptions.body['Classification'];
+						return requestOptions;
+					},
+				],
 			},
 		},
 	},
 	{
 		displayName: 'Determination',
-		name: 'determination',
+		name: 'Determination',
 		type: 'options',
 		options: [
 			{
@@ -219,6 +269,16 @@ export const updateAlertDescription: INodeProperties[] = [
 			send: {
 				type: 'body',
 				property: 'Determination',
+				preSend: [
+					async function (
+						this: IExecuteSingleFunctions,
+						requestOptions: IHttpRequestOptions,
+					): Promise<IHttpRequestOptions> {
+						if (requestOptions.body && this.getNodeParameter('Determination', '') === '')
+							delete requestOptions.body['Determination'];
+						return requestOptions;
+					},
+				],
 			},
 		},
 	},

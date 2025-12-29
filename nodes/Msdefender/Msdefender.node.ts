@@ -67,7 +67,7 @@ export class Msdefender implements INodeType {
 					},
 					{
 						name: 'Alert',
-						value: 'alert',
+						value: 'defenderAlert',
 					},
 					{
 						name: 'Exposure Score',

@@ -1,8 +1,8 @@
 import { INodeProperties } from "n8n-workflow";
 
 const showOnlyForGetAlertById = {
-    operation: ['getAlertById'],
-    resource: ['alert'],
+	operation: ['getAlertById'],
+	resource: ['defenderAlert'],
 };
 
 export const getAlertByIdDescription: INodeProperties[] = [

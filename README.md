@@ -27,6 +27,12 @@ Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes
 - Advanced Query: Run advanced queries against Microsoft Defender.
 - Alert: Manage and retrieve information about security alerts.
   - Get Many: Retrieve many alerts.
+  - Get By ID: Retrieve a specific alert by its ID.
+  - Update Alert: Update the properties of a specific alert.
+- Remediation: Manage and retrieve information about remediation activities.
+  - Get Remediation Activities: Retrieve all remediation activities.
+  - Get Remediation Activity: Retrieve a specific remediation activity by ID.
+  - Get Devices By Remediation Activity: Retrieve devices exposed in a specific remediation activity by ID
 - Machine: Manage and retrieve information about devices.
   - Add Or Remove Tag For Machine
   - Find By Tag

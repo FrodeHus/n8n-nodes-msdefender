@@ -4,7 +4,7 @@ import { updateAlertDescription } from './updateAlert';
 import { getAlertByIdDescription } from './getAlertById';
 
 const showOnlyForAlerts = {
-	resource: ['alert'],
+	resource: ['defenderAlert'],
 };
 
 export const alertDescription: INodeProperties[] = [
@@ -43,8 +43,8 @@ export const alertDescription: INodeProperties[] = [
 			},
 		],
 		default: 'listAlerts',
-		...getAlertByIdDescription,
-		...getAllAlertsDescription,
-		...updateAlertDescription,
 	},
+	...getAllAlertsDescription,
+	...getAlertByIdDescription,
+	...updateAlertDescription,
 ];  

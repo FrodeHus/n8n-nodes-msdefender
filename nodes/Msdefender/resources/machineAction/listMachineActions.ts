@@ -15,9 +15,7 @@ export const listMachineActionsDescription: INodeProperties[] = [
 		description:
 			'The filter expression - supports: ID, atus, machineId, type, requestor, and creationDateTimeUtc',
 		displayOptions: {
-			show: {
-				...showOnlyForListMachineActions,
-			},
+			show: showOnlyForListMachineActions,
 		},
 		routing: {
 			send: {
@@ -67,9 +65,7 @@ export const listMachineActionsDescription: INodeProperties[] = [
 		name: 'returnAll',
 		type: 'boolean',
 		displayOptions: {
-			show: {
-				...showOnlyForListMachineActions,
-			},
+			show: showOnlyForListMachineActions,
 		},
 		default: false,
 		description: 'Whether to return all results or only up to a given limit',

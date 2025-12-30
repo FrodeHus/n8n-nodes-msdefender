@@ -1,7 +1,7 @@
 import { INodeProperties } from 'n8n-workflow';
 
 const showOnlyForGetAllRemediationTasks = {
-	operation: ['getRemediationActivities'],
+	operation: ['remediationActivities'],
 	resource: ['remediation'],
 };
 

@@ -1,8 +1,8 @@
 import { INodeProperties } from "n8n-workflow";
 
 const showOnlyForGetExposedDevicesByRemediation = {
-    operation: ['getExposedDevicesByRemediation'],
-    resource: ['remediation'],
+	operation: ['getExposedDevicesByRemediation'],
+	resource: ['remediation'],
 };
 
 export const getExposedDevicesByRemediationDescription: INodeProperties[] = [

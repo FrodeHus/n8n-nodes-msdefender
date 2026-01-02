@@ -1,4 +1,4 @@
-import type { Icon, ICredentialType, INodeProperties } from 'n8n-workflow';
+import type { Icon, ICredentialTestRequest, ICredentialType, INodeProperties } from 'n8n-workflow';
 
 export class MsdefenderOAuth2Api implements ICredentialType {
 	name = 'msdefenderOAuth2Api';
@@ -14,6 +14,13 @@ export class MsdefenderOAuth2Api implements ICredentialType {
 	// Link to your community node's README
 	documentationUrl =
 		'https://learn.microsoft.com/en-us/entra/identity-platform/v2-oauth2-client-creds-grant-flow';
+
+	test: ICredentialTestRequest = {
+		request: {
+			method: 'GET',
+			url: 'https://api.securitycenter.microsoft.com/api/exposureScore',
+		},
+	};
 
 	properties: INodeProperties[] = [
 		{

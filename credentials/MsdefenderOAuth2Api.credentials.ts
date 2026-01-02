@@ -18,7 +18,8 @@ export class MsdefenderOAuth2Api implements ICredentialType {
 	test: ICredentialTestRequest = {
 		request: {
 			method: 'GET',
-			url: 'https://api.securitycenter.microsoft.com/api/exposureScore',
+			baseURL: 'https://api.securitycenter.microsoft.com',
+			url: '/api/machines?$top=1',
 		},
 	};
 

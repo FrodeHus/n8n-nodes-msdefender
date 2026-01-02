@@ -2,11 +2,12 @@
 
 [![CI](https://github.com/FrodeHus/n8n-nodes-msdefender/actions/workflows/ci.yml/badge.svg)](https://github.com/FrodeHus/n8n-nodes-msdefender/actions/workflows/ci.yml)
 
-
 This is an n8n community node. It lets you use Microsoft Defender in your n8n workflows.
 
 Microsoft Defender is a comprehensive security solution that helps protect your devices and data from threats.
 This node allows you to interact with the Microsoft Defender API to perform various security operations, such as managing devices, retrieving threat intelligence, and more.
+
+For a some background, visit [I made a n9n node for Microsoft Defender](https://www.frodehus.dev/i-made-a-n8n-node-for-microsoft-defender/).
 
 [n8n](https://n8n.io/) is a [fair-code licensed](https://docs.n8n.io/sustainable-use-license/) workflow automation platform.
 
@@ -68,6 +69,7 @@ To use this node, you need to set up an Entra ID (Azure AD) application and obta
 ![Entra ID App Permissions](/images/app-permissions.png)
 
 When configuring the Microsoft Defender node in n8n, use the following credentials:
+
 - **Client ID**: The Application (client) ID from your Azure AD application.
 - **Client Secret**: The client secret generated for your Azure AD application.
 - **Access Token URL**: https://login.microsoftonline.com/<your-tenant-id>/oauth2/v2.0/token
@@ -84,8 +86,12 @@ This node is compatible with latest n8n versions.
 
 ## Resources
 
-* [n8n community nodes documentation](https://docs.n8n.io/integrations/#community-nodes)
+- [n8n community nodes documentation](https://docs.n8n.io/integrations/#community-nodes)
 
 ## Version history
 
-- 0.1.0 Initial release with Advanced Query and Machine operations.
+- 1.2.1 (2026-01-02): Credential test added; CI and npm-publish workflow updates; OData `getNextODataLink()` refactor.
+- 1.2.0 (2025-12-30): Added Alert operations (`getAlertById`, `updateAlert`), Remediation resources, and pre-send cleanup.
+- 1.1.0 (2025-12-29): Added missing CVE lookup and remediation task operations.
+- 1.0.2 (2025-12-26): Fixed parameter issues, improved tagging, introduced Alerts resource.
+- 1.0.0 (2025-12-23): Initial release with Advanced Query, Machine, Machine Actions, and Vulnerability operations.

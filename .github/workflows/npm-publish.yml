@@ -31,6 +31,4 @@ jobs:
         with:
           node-version: 24
           registry-url: https://registry.npmjs.org/
-      - name: Install n8n-node-cli 
-        run: npm install --global @n8n/node-cli
-      - run: npm run release
+      - run: npm publish

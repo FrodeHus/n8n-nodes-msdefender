@@ -7,6 +7,7 @@ import { vulnerabilityDescription } from './vulnerability';
 import { alertDescription } from './resources/alert';
 import { remediationDescription } from './resources/remediation';
 import { investigationDescription } from './resources/investigation';
+import { indicatorDescription } from './resources/indicator';
 
 export class Msdefender implements INodeType {
 	description: INodeTypeDescription = {
@@ -76,6 +77,10 @@ export class Msdefender implements INodeType {
 						value: 'exposure',
 					},
 					{
+						name: 'Indicator',
+						value: 'indicator',
+					},
+					{
 						name: 'Investigation',
 						value: 'investigation',
 					},
@@ -106,6 +111,7 @@ export class Msdefender implements INodeType {
 			...machineActionsDescription,
 			...vulnerabilityDescription,
 			...remediationDescription,
+			...indicatorDescription,
 		],
 	};
 }

@@ -31,6 +31,7 @@ jobs:
         with:
           node-version: 24
           registry-url: https://registry.npmjs.org/
+      - run: npm install -g npm@latest
       - run: npm install @n8n/node-cli
         name: Install n8n-node CLI tool
       - run: npm config delete always-auth

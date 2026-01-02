@@ -8,8 +8,8 @@ on:
     types: [created]
 
 permissions:
-  contents: read # Default permission
-  id-token: write # Required for OIDC authentication
+  contents: write 
+  id-token: write 
   
 jobs:
   build:
@@ -36,3 +36,5 @@ jobs:
       - run: npm config delete always-auth
         name: Workaround - Remove deprecated always-auth config
       - run: npm run release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

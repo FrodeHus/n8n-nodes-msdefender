@@ -54,6 +54,10 @@ Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes
   - Get All Vulnerabilities
   - Get Machines By CVE
   - Get By Machine And Software
+- Investigation
+  - Get All Investigations
+  - Get Investigation By ID
+  - Start Investigation on Machine
 
 ## Credentials
 
@@ -72,7 +76,7 @@ When configuring the Microsoft Defender node in n8n, use the following credentia
 
 - **Client ID**: The Application (client) ID from your Azure AD application.
 - **Client Secret**: The client secret generated for your Azure AD application.
-- **Access Token URL**: https://login.microsoftonline.com/<your-tenant-id>/oauth2/v2.0/token
+- **Access Token URL**: `https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token`
 
 
 
@@ -90,6 +94,7 @@ This node is compatible with latest n8n versions.
 
 ## Version history
 
+- 1.3.0 (Unreleased): Added Investigation resource (list investigations, get by ID, start investigation on machine).
 - 1.2.1 (2026-01-02): Credential test added; CI and npm-publish workflow updates; OData `getNextODataLink()` refactor.
 - 1.2.0 (2025-12-30): Added Alert operations (`getAlertById`, `updateAlert`), Remediation resources, and pre-send cleanup.
 - 1.1.0 (2025-12-29): Added missing CVE lookup and remediation task operations.

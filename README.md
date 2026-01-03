@@ -58,6 +58,10 @@ Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes
   - Get All Investigations
   - Get Investigation By ID
   - Start Investigation on Machine
+- Indicator
+  - Get All Indicators
+  - Submit Indicator
+  - Delete Indicator
 
 ## Credentials
 
@@ -94,7 +98,9 @@ This node is compatible with latest n8n versions.
 
 ## Version history
 
-- 1.3.0 (Unreleased): Added Investigation resource (list investigations, get by ID, start investigation on machine).
+- 1.4.0 (2026-01-03): Added threat intelligence indicator operations (list indicators, submit indicator, delete indicator).
+- 1.3.0 (2026-01-03): Added Investigation resource (list investigations, get by ID, start investigation on machine).
+  Also added Indicator resource (list indicators, submit indicator, delete indicator).
 - 1.2.1 (2026-01-02): Credential test added; CI and npm-publish workflow updates; OData `getNextODataLink()` refactor.
 - 1.2.0 (2025-12-30): Added Alert operations (`getAlertById`, `updateAlert`), Remediation resources, and pre-send cleanup.
 - 1.1.0 (2025-12-29): Added missing CVE lookup and remediation task operations.

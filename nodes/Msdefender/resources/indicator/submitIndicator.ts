@@ -160,7 +160,8 @@ export const submitIndicatorDescription: INodeProperties[] = [
 				property: 'action',
 			},
 		},
-		{
+	},
+	{
 		displayName: 'Optional Parameters',
 		name: 'optionalParameters',
 		type: 'collection',
@@ -195,7 +196,6 @@ export const submitIndicatorDescription: INodeProperties[] = [
 						name: 'High',
 						value: 'High',
 					},
-
 				],
 				routing: {
 					send: {
@@ -203,7 +203,6 @@ export const submitIndicatorDescription: INodeProperties[] = [
 						property: 'severity',
 					},
 				},
-				default: '',
 			},
 			{
 				displayName: 'Expiration Date',
@@ -217,7 +216,7 @@ export const submitIndicatorDescription: INodeProperties[] = [
 						property: 'expirationTime',
 					},
 				},
-			}
-		],		
+			},
+		],
 	},
 ];

@@ -162,6 +162,34 @@ export const submitIndicatorDescription: INodeProperties[] = [
 		},
 	},
 	{
+		displayName: 'Generate Alert',
+		name: 'generateAlert',
+		type: 'options',
+		default: false,
+		description: 'Whether to generate an alert when the indicator is matched',
+		options: [
+			{
+				name: 'True',
+				value: true,
+			},
+			{
+				name: 'False',
+				value: false,
+			},
+		],
+		displayOptions: {
+			show: {
+				...showOnlyForSubmitIndicator,
+			},
+		},
+		routing: {
+			send: {
+				type: 'body',
+				property: 'generateAlert',
+			},
+		},
+	},
+	{
 		displayName: 'Optional Parameters',
 		name: 'optionalParameters',
 		type: 'collection',

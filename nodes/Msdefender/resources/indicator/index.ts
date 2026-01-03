@@ -1,5 +1,6 @@
 import { INodeProperties } from 'n8n-workflow';
 import { submitIndicatorDescription } from './submitIndicator';
+import { deleteIndicatorDescription } from './delete';
 
 const showOnlyForIndicator = {
 	resource: ['indicator'],
@@ -51,4 +52,5 @@ export const indicatorDescription: INodeProperties[] = [
 		default: 'getAllIndicators',
 	},
 	...submitIndicatorDescription,
+	...deleteIndicatorDescription,
 ];

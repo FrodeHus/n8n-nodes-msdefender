@@ -60,7 +60,7 @@ export const submitIndicatorDescription: INodeProperties[] = [
 				value: 'DomainName',
 			},
 			{
-				name: 'CertificateThumbPrint',
+				name: 'Certificate Thumb Print',
 				value: 'CertificateThumbPrint',
 			},
 		],
@@ -160,5 +160,64 @@ export const submitIndicatorDescription: INodeProperties[] = [
 				property: 'action',
 			},
 		},
+		{
+		displayName: 'Optional Parameters',
+		name: 'optionalParameters',
+		type: 'collection',
+		placeholder: 'Add Optional Parameters',
+		displayOptions: {
+			show: {
+				...showOnlyForSubmitIndicator,
+			},
+		},
+		default: {},
+		options: [
+			{
+				displayName: 'Severity',
+				name: 'severity',
+				type: 'options',
+				default: 'Medium',
+				description: 'Severity level for the indicator',
+				options: [
+					{
+						name: 'Informational',
+						value: 'Informational',
+					},
+					{
+						name: 'Low',
+						value: 'Low',
+					},
+					{
+						name: 'Medium',
+						value: 'Medium',
+					},
+					{
+						name: 'High',
+						value: 'High',
+					},
+
+				],
+				routing: {
+					send: {
+						type: 'body',
+						property: 'severity',
+					},
+				},
+				default: '',
+			},
+			{
+				displayName: 'Expiration Date',
+				name: 'expirationDate',
+				type: 'dateTime',
+				default: '',
+				description: 'The expiration date of the indicator',
+				routing: {
+					send: {
+						type: 'body',
+						property: 'expirationTime',
+					},
+				},
+			}
+		],		
 	},
 ];

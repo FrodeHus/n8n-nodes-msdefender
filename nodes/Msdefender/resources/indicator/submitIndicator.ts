@@ -7,8 +7,8 @@ const showOnlyForSubmitIndicator = {
 
 export const submitIndicatorDescription: INodeProperties[] = [
 	{
-		name: 'Title',
 		displayName: 'Title',
+		name: 'Title',
 		type: 'string',
 		displayOptions: {
 			show: {
@@ -36,8 +36,24 @@ export const submitIndicatorDescription: INodeProperties[] = [
 		},
 		options: [
 			{
+				name: 'Certificate Thumb Print',
+				value: 'CertificateThumbPrint',
+			},
+			{
+				name: 'DomainName',
+				value: 'DomainName',
+			},
+			{
 				name: 'File Sha1',
 				value: 'FileSha1',
+			},
+			{
+				name: 'File Sha256',
+				value: 'FileSha256',
+			},
+			{
+				name: 'File ShaMd5',
+				value: 'FileShaMd5',
 			},
 			{
 				name: 'IP Address',
@@ -47,24 +63,8 @@ export const submitIndicatorDescription: INodeProperties[] = [
 				name: 'URL',
 				value: 'Url',
 			},
-			{
-				name: 'File ShaMd5',
-				value: 'FileShaMd5',
-			},
-			{
-				name: 'File Sha256',
-				value: 'FileSha256',
-			},
-			{
-				name: 'DomainName',
-				value: 'DomainName',
-			},
-			{
-				name: 'Certificate Thumb Print',
-				value: 'CertificateThumbPrint',
-			},
 		],
-		default: 'fileSha1',
+		default: 'FileSha1',
 		required: true,
 		description: 'The type of the indicator to submit',
 		routing: {
@@ -123,10 +123,6 @@ export const submitIndicatorDescription: INodeProperties[] = [
 		},
 		options: [
 			{
-				name: 'Audit',
-				value: 'Audit',
-			},
-			{
 				name: 'Alert',
 				value: 'Alert',
 			},
@@ -137,6 +133,10 @@ export const submitIndicatorDescription: INodeProperties[] = [
 			{
 				name: 'Allow',
 				value: 'Allow',
+			},
+			{
+				name: 'Audit',
+				value: 'Audit',
 			},
 			{
 				name: 'Block',
@@ -165,7 +165,7 @@ export const submitIndicatorDescription: INodeProperties[] = [
 		displayName: 'Generate Alert',
 		name: 'generateAlert',
 		type: 'options',
-		default: false,
+		default: 'True',
 		description: 'Whether to generate an alert when the indicator is matched',
 		options: [
 			{

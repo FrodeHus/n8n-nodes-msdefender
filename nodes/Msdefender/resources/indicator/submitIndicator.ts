@@ -170,11 +170,11 @@ export const submitIndicatorDescription: INodeProperties[] = [
 		options: [
 			{
 				name: 'True',
-				value: true,
+				value: 'True',
 			},
 			{
 				name: 'False',
-				value: false,
+				value: 'False',
 			},
 		],
 		displayOptions: {

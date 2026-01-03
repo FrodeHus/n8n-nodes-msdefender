@@ -1,4 +1,4 @@
-import { INodeProperties } from 'n8n-workflow';
+import { IExecuteSingleFunctions, IHttpRequestOptions, INodeProperties } from 'n8n-workflow';
 
 const showOnlyForSubmitIndicator = {
 	operation: ['submitIndicator'],
@@ -164,7 +164,7 @@ export const submitIndicatorDescription: INodeProperties[] = [
 	{
 		displayName: 'Generate Alert',
 		name: 'generateAlert',
-		type: 'options',
+		type: 'hidden',
 		default: 'True',
 		description: 'Whether to generate an alert when the indicator is matched',
 		options: [
@@ -242,6 +242,30 @@ export const submitIndicatorDescription: INodeProperties[] = [
 					send: {
 						type: 'body',
 						property: 'expirationTime',
+						preSend: [
+							async function (
+								this: IExecuteSingleFunctions,
+								requestOptions: IHttpRequestOptions,
+							): Promise<IHttpRequestOptions> {
+								// Ensure expirationTime is a proper ISO 8601 string (DateTimeOffset)
+								const raw = this.getNodeParameter(
+									'optionalParameters.expirationDate',
+									'',
+								) as string;
+								if (requestOptions.body) {
+									if (!raw) {
+										delete (requestOptions.body as Record<string, unknown>)['expirationTime'];
+									} else {
+										const d = new Date(raw);
+										if (!isNaN(d.getTime())) {
+											(requestOptions.body as Record<string, unknown>)['expirationTime'] =
+												d.toISOString();
+										}
+									}
+								}
+								return requestOptions;
+							},
+						],
 					},
 				},
 			},

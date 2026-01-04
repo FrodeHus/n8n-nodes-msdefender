@@ -1,4 +1,4 @@
-# n8n-nodes-msdefender 
+# n8n-nodes-msdefender
 
 [![CI](https://github.com/FrodeHus/n8n-nodes-msdefender/actions/workflows/ci.yml/badge.svg)](https://github.com/FrodeHus/n8n-nodes-msdefender/actions/workflows/ci.yml)
 
@@ -62,6 +62,19 @@ Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes
   - Get All Indicators
   - Submit Indicator
   - Delete Indicator
+- Recommendation
+  - Get Security Recommendations
+  - Get Security Recommendation By ID
+  - Get Machines By Security Recommendation
+  - Get Vulnerabilities By Security Recommendation
+  - Get Recommendations By Software
+- Software
+  - Get All Software
+  - Get Software By ID
+  - Get Software Version Distribution
+  - Get Machines By Software
+  - Get Vulnerabilities By Software
+  - Get Missing KBs By Software
 
 ## Credentials
 
@@ -98,6 +111,8 @@ This node is compatible with latest n8n versions.
 
 ## Version history
 
+- 1.6.0 (2026-01-04): Added Software resource (get all software, get by ID, get version distribution, get machines by software, get vulnerabilities by software, get missing KBs by software).
+- 1.5.0 (2026-01-04): Added Recommendation resource (get security recommendations).
 - 1.4.0 (2026-01-03): Added threat intelligence indicator operations (list indicators, submit indicator, delete indicator).
 - 1.3.0 (2026-01-03): Added Investigation resource (list investigations, get by ID, start investigation on machine).
   Also added Indicator resource (list indicators, submit indicator, delete indicator).

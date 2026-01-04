@@ -9,6 +9,7 @@ import { remediationDescription } from './resources/remediation';
 import { investigationDescription } from './resources/investigation';
 import { indicatorDescription } from './resources/indicator';
 import { recommendationDescription } from './resources/recommendation';
+import { softwareDescription } from './software';
 
 export class Msdefender implements INodeType {
 	description: INodeTypeDescription = {
@@ -94,12 +95,16 @@ export class Msdefender implements INodeType {
 						value: 'machineAction',
 					},
 					{
-						name: 'Recomendation',
+						name: 'Recommendation',
 						value: 'recommendation',
 					},
 					{
 						name: 'Remedation',
 						value: 'remediation',
+					},
+					{
+						name: 'Software',
+						value: 'software',
 					},
 					{
 						name: 'Vulnerability',
@@ -117,6 +122,7 @@ export class Msdefender implements INodeType {
 			...vulnerabilityDescription,
 			...recommendationDescription,
 			...remediationDescription,
+			...softwareDescription,
 			...indicatorDescription,
 		],
 	};

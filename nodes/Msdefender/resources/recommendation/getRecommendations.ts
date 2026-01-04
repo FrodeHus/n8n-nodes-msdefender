@@ -19,16 +19,23 @@ export const getRecommendationsDescription: INodeProperties[] = [
 		placeholder: 'Add OData Operators',
 		options: [
 			{
-				displayName: '$filter',
+				displayName: 'Filter',
 				name: 'filter',
 				type: 'string',
 				default: '',
+				routing: {
+					request: {
+						qs: {
+							$filter: '={{$value}}',
+						},
+					},
+				},
 				description:
 					'An OData filter expression that filters elements in the collection. Allowed values: id, productName, vendor, recommendedVersion, recommendationCategory, subCategory, severityScore, remediationType, recommendedProgram, recommendedVendor, and status',
 			},
 			{
-				displayName: '$top',
-				name: 'top',
+				displayName: 'Top',
+				name: '$top',
 				type: 'number',
 				typeOptions: {
 					minValue: 1,
@@ -36,13 +43,27 @@ export const getRecommendationsDescription: INodeProperties[] = [
 				},
 				default: 50,
 				description: 'Specifies the maximum number of items to return from the collection.',
+				routing: {
+					request: {
+						qs: {
+							$top: '={{$value}}',
+						},
+					},
+				},
 			},
 			{
-				displayName: '$skip',
-				name: 'skip',
+				displayName: 'Skip',
+				name: '$skip',
 				type: 'number',
 				default: 0,
 				description: 'Specifies the number of items to skip in the collection.',
+				routing: {
+					request: {
+						qs: {
+							$skip: '={{$value}}',
+						},
+					},
+				},
 			},
 		],
 	},

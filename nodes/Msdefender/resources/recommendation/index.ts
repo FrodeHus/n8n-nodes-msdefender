@@ -22,16 +22,21 @@ export const recommendationDescription: INodeProperties[] = [
 		},
 		options: [
 			{
-				name: 'Get Recommendations',
-				action: 'Get recommendations',
+				name: 'Get All Recommendations',
+				action: 'Get all recommendations',
 				value: 'getAllRecommendations',
-				description: 'Get all recommendations',
 				routing: {
 					request: {
 						method: 'GET',
 						url: '/api/recommendations/',
 					},
 				},
+			},
+			{
+				name: 'Get Machines By Recommendation',
+				action: 'Get machines by recommendation',
+				value: 'getMachinesByRecommendation',
+				description: 'Get machines linked to a specific recommendation by ID',
 			},
 			{
 				name: 'Get Recommendation by ID',
@@ -44,13 +49,7 @@ export const recommendationDescription: INodeProperties[] = [
 				action: 'Get recommendation by software',
 				value: 'getRecommendationBySoftware',
 				description: 'Retrieves a security recommendation related to a specific software',
-            },
-            {
-                name: 'Get Machines By Recommendation',
-                action: 'Get machines by recommendation',
-                value: 'getMachinesByRecommendation',
-                description: 'Get machines linked to a specific recommendation by ID',
-            },
+			},
 			{
 				name: 'Get Vulnerabilities by Recommendation',
 				value: 'getVulnerabilitiesByRecommendation',
@@ -59,10 +58,10 @@ export const recommendationDescription: INodeProperties[] = [
 			},
 		],
 		default: 'getAllRecommendations',
-    },
-    ...getRecommendationsDescription,
-    ...getMachinesByRecommendationDescription,
+	},
+	...getRecommendationsDescription,
+	...getMachinesByRecommendationDescription,
 	...getVulnerabilitiesByRecommendationDescription,
-    ...getRecommendationByIdDescription,
-    ...getRecommendationBySoftwareDescription,
+	...getRecommendationByIdDescription,
+	...getRecommendationBySoftwareDescription,
 ];

@@ -1,4 +1,4 @@
-import { INodeProperties } from "n8n-workflow";
+import { INodeProperties } from 'n8n-workflow';
 
 const showOnlyForGetRecommendations = {
 	operation: ['getAllRecommendations'],
@@ -31,7 +31,7 @@ export const getRecommendationsDescription: INodeProperties[] = [
 					},
 				},
 				description:
-					'An OData filter expression that filters elements in the collection. Allowed values: id, productName, vendor, recommendedVersion, recommendationCategory, subCategory, severityScore, remediationType, recommendedProgram, recommendedVendor, and status',
+					'An OData filter expression that filters elements in the collection. Allowed values: ID, productName, vendor, recommendedVersion, recommendationCategory, subCategory, severityScore, remediationType, recommendedProgram, recommendedVendor, and status.',
 			},
 			{
 				displayName: 'Top',
@@ -42,7 +42,7 @@ export const getRecommendationsDescription: INodeProperties[] = [
 					maxValue: 100,
 				},
 				default: 50,
-				description: 'Specifies the maximum number of items to return from the collection.',
+				description: 'Specifies the maximum number of items to return from the collection',
 				routing: {
 					request: {
 						qs: {
@@ -56,7 +56,7 @@ export const getRecommendationsDescription: INodeProperties[] = [
 				name: '$skip',
 				type: 'number',
 				default: 0,
-				description: 'Specifies the number of items to skip in the collection.',
+				description: 'Specifies the number of items to skip in the collection',
 				routing: {
 					request: {
 						qs: {

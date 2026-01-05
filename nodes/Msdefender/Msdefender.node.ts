@@ -3,13 +3,13 @@ import { machineDescription } from './resources/machine';
 import { advancedQueryDescription } from './resources/advancedQuery';
 import { exposureDescription } from './resources/exposure';
 import { machineActionsDescription } from './resources/machineAction';
-import { vulnerabilityDescription } from './vulnerability';
+import { vulnerabilityDescription } from './resources/vulnerability';
 import { alertDescription } from './resources/alert';
 import { remediationDescription } from './resources/remediation';
 import { investigationDescription } from './resources/investigation';
 import { indicatorDescription } from './resources/indicator';
 import { recommendationDescription } from './resources/recommendation';
-import { softwareDescription } from './software';
+import { softwareDescription } from './resources/software';
 
 export class Msdefender implements INodeType {
 	description: INodeTypeDescription = {

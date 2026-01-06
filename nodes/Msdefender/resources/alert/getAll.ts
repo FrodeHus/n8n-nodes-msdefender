@@ -24,26 +24,56 @@ export const getAllAlertsDescription: INodeProperties[] = [
 		},
 	},
 	{
-		displayName: 'Limit',
-		name: 'limit',
-		type: 'number',
-		default: 50,
+		displayName: 'OData Operators',
+		name: 'odataOperators',
+		type: 'collection',
 		displayOptions: {
 			show: showOnlyForGetAllAlerts,
 		},
-		typeOptions: {
-			minValue: 1,
-			maxValue: 1000,
-		},
-		description: 'Max number of results to return',
-		routing: {
-			send: {
-				type: 'query',
-				property: '$top',
+		default: {},
+		placeholder: 'Add OData Operator',
+		options: [
+			{
+				displayName: 'Filter',
+				name: 'filter',
+				type: 'string',
+				default: '',
+				description: 'An OData filter expression that filters elements in the collection. Available fields: alertCreationTime, lastUpdateTime, incidentId, InvestigationId, ID, asssignedTo, detectionSource, lastEventTime, status, severity and category.',
+				routing: {
+					send: {
+						type: 'query',
+						property: '$filter',
+					},
+				},
 			},
-			output: {
-				maxResults: '={{$value}}',
+			{
+				displayName: 'Top',
+				name: 'top',
+				type: 'string',
+				default: '',
+				description:
+					'An OData top expression that limits the number of elements in the collection. See Microsoft documentation for supported syntax.',
+				routing: {
+					send: {
+						type: 'query',
+						property: '$top',
+					},
+				},
 			},
-		},
+			{
+				displayName: 'Skip',
+				name: 'skip',
+				type: 'string',
+				default: '',
+				description:
+					'An OData skip expression that skips a number of elements in the collection. See Microsoft documentation for supported syntax.',
+				routing: {
+					send: {
+						type: 'query',
+						property: '$skip',
+					},
+				},
+			},
+		],
 	},
 ];

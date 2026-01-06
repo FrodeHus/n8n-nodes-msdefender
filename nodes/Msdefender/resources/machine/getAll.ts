@@ -1,4 +1,4 @@
-import type { IExecuteSingleFunctions, IHttpRequestOptions, INodeProperties } from 'n8n-workflow';
+import type { INodeProperties } from 'n8n-workflow';
 
 const showOnlyForGetAllMachine = {
 	operation: ['getAllMachines'],
@@ -7,33 +7,57 @@ const showOnlyForGetAllMachine = {
 
 export const getAllMachineDescription: INodeProperties[] = [
 	{
-		displayName: 'Filter',
-		name: 'filter',
-		type: 'string',
-		default: '',
-		placeholder: "computerDnsName eq 'laptop01' or computerDnsName eq 'desktop01'",
-		description: 'The filter expression',
+		displayName: 'OData Operators',
+		name: 'odataOperators',
+		type: 'collection',
 		displayOptions: {
-			show: {
-				...showOnlyForGetAllMachine,
-			},
+			show: showOnlyForGetAllMachine,
 		},
-		routing: {
-			send: {
-				type: 'query',
-				property: '$filter',
-				preSend: [
-					async function (
-						this: IExecuteSingleFunctions,
-						requestOptions: IHttpRequestOptions,
-					): Promise<IHttpRequestOptions> {
-						if (requestOptions.qs && this.getNodeParameter('filter', '') === '')
-							delete requestOptions.qs['$filter'];
-						return requestOptions;
+		default: {},
+		placeholder: 'Add OData Operator',
+		options: [
+			{
+				displayName: 'Filter',
+				name: 'filter',
+				type: 'string',
+				default: '',
+				description: 'An OData filter expression that filters elements in the collection. Available fields: computerDnsName, ID, version, deviceValue, aadDeviceId, machineTags, lastSeen,exposureLevel, onboardingStatus, lastIpAddress, healthStatus, osPlatform, riskScore and rbacGroupId.',
+				routing: {
+					send: {
+						type: 'query',
+						property: '$filter',
 					},
-				],
+				},
 			},
-		},
+			{
+				displayName: 'Top',
+				name: 'top',
+				type: 'string',
+				default: '',
+				description:
+					'An OData top expression that limits the number of elements in the collection. See Microsoft documentation for supported syntax.',
+				routing: {
+					send: {
+						type: 'query',
+						property: '$top',
+					},
+				},
+			},
+			{
+				displayName: 'Skip',
+				name: 'skip',
+				type: 'string',
+				default: '',
+				description:
+					'An OData skip expression that skips a number of elements in the collection. See Microsoft documentation for supported syntax.',
+				routing: {
+					send: {
+						type: 'query',
+						property: '$skip',
+					},
+				},
+			},
+		],
 	},
 	{
 		displayName: 'Limit',

@@ -1,0 +1,108 @@
+import {
+	INodeExecutionData,
+	INodeType,
+	INodeTypeDescription,
+	IPollFunctions,
+	JsonObject,
+	NodeApiError,
+	NodeConnectionTypes,
+} from 'n8n-workflow';
+
+export class MsdefenderTrigger implements INodeType {
+	description: INodeTypeDescription = {
+		displayName: 'Microsoft Defender Trigger',
+		name: 'msdefenderTrigger',
+		icon: 'file:../../icons/ms-defender.svg',
+		group: ['trigger'],
+		polling: true,
+		usableAsTool: true,
+		version: 1,
+		subtitle: '={{"Trigger: " + $parameter["eventType"]}}',
+		description: 'Triggers workflows on Microsoft Defender events',
+		defaults: {
+			name: 'Microsoft Defender Trigger',
+		},
+		inputs: [],
+		outputs: [NodeConnectionTypes.Main],
+		credentials: [
+			{
+				name: 'msdefenderOAuth2Api',
+				required: true,
+				displayOptions: {
+					show: {
+						authentication: ['oAuth2'],
+					},
+				},
+			},
+		],
+		properties: [
+			{
+				displayName: 'Authentication',
+				name: 'authentication',
+				type: 'options',
+				options: [
+					{
+						name: 'OAuth2',
+						value: 'oAuth2',
+					},
+				],
+				default: 'oAuth2',
+			},
+			{
+				displayName: 'Event Type',
+				name: 'eventType',
+				type: 'options',
+				options: [
+					{
+						name: 'Alert Created',
+						value: 'alertCreated',
+					},
+					{
+						name: 'Alert Updated',
+						value: 'alertUpdated',
+					},
+				],
+				default: 'alertCreated',
+				description: 'The type of event to trigger on',
+			},
+		],
+	};
+
+	async poll(this: IPollFunctions): Promise<INodeExecutionData[][] | null> {
+		const eventType = this.getNodeParameter('eventType') as string;
+		const nodeData = this.getWorkflowStaticData('node');
+
+		const baseUrl = 'https://api.securitycenter.microsoft.com/';
+		let endpoint = '';
+
+		if (eventType === 'alertCreated') {
+			endpoint = 'api/alerts?$filter=alertCreationTime gt ';
+		} else if (eventType === 'alertUpdated') {
+			endpoint = 'api/alerts?$filter=lastUpdateTime gt ';
+		}
+		const lastPollTime = (nodeData.lastPollTime as Date) || new Date(Date.now() - 60 * 1000);
+		const filterTime = lastPollTime.toISOString();
+		const url = `${baseUrl}${endpoint}${filterTime}`;
+		let events = [];
+		try {
+			const responseData = await this.helpers.httpRequestWithAuthentication.call(
+				this,
+				'msdefenderOAuth2Api',
+				{
+					method: 'GET',
+					url,
+				},
+			);
+			events = responseData.value as JsonObject[];
+			nodeData.lastPollTime = new Date();
+		} catch (error) {
+			throw new NodeApiError(this.getNode(), error as JsonObject);
+		}
+
+		if (events.length === 0) {
+			return null;
+		}
+
+		return [this.helpers.returnJsonArray(events)];
+	}
+}

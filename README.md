@@ -7,7 +7,7 @@ This is an n8n community node. It lets you use Microsoft Defender in your n8n wo
 Microsoft Defender is a comprehensive security solution that helps protect your devices and data from threats.
 This node allows you to interact with the Microsoft Defender API to perform various security operations, such as managing devices, retrieving threat intelligence, and more.
 
-For a some background, visit [I made a n9n node for Microsoft Defender](https://www.frodehus.dev/i-made-a-n8n-node-for-microsoft-defender/).
+For a some background, visit [I made a n8n node for Microsoft Defender](https://www.frodehus.dev/i-made-a-n8n-node-for-microsoft-defender/).
 
 [n8n](https://n8n.io/) is a [fair-code licensed](https://docs.n8n.io/sustainable-use-license/) workflow automation platform.
 
@@ -75,6 +75,11 @@ Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes
   - Get Machines By Software
   - Get Vulnerabilities By Software
   - Get Missing KBs By Software
+
+## Triggers
+
+- Microsoft Defender Trigger
+  - Polling trigger for alert created or updated
 
 ## Credentials
 

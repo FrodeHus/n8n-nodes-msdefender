@@ -1,90 +1,53 @@
 import { INodeProperties } from 'n8n-workflow';
-import { getNextODataLink } from './utils';
 
-const showOnlyForOdataOperations = {
-	operation: ['getAllMachines', 'listSoftware', 'getAllVulnerabilities'],
-	resource: ['machine', 'vulnerability'],
-};
-
-export const commonOdataProperties: INodeProperties[] = [
-	{
-		displayName: 'Limit',
-		name: 'limit',
-		type: 'number',
-		default: 50,
-		displayOptions: {
-			show: {
-				...showOnlyForOdataOperations,
-				returnAll: [false],
-			},
-		},
-		typeOptions: {
-			minValue: 1,
-			maxValue: 1000,
-		},
-		description: 'Max number of results to return',
-		routing: {
-			send: {
-				type: 'query',
-				property: '$top',
-			},
-			output: {
-				maxResults: '={{$value}}',
-			},
-		},
-	},
-	{
-		displayName: 'Return All',
-		name: 'returnAll',
-		type: 'boolean',
-		displayOptions: {
-			show: {
-				...showOnlyForOdataOperations,
-			},
-		},
-		default: true,
-		description: 'Whether to return all results or only up to a given limit',
-		routing: {
-			send: {
-				paginate: '={{$value}}',
-				type: 'query',
-				property: '$top',
-				value: '100',
-			},
-			operations: {
-				pagination: {
-					type: 'generic',
-					properties: {
-						continue: `={{ !!(${getNextODataLink.toString()})($response.body) }}`,
-						request: {
-							url: `={{ (${getNextODataLink.toString()})($response.body) ?? $request.url }}`,
-						},
-					},
+export const commonOdataProperties: INodeProperties = {
+	displayName: 'OData Operators',
+	name: 'odataOperators',
+	type: 'collection',
+	default: {},
+	placeholder: 'Add OData Operator',
+	options: [
+		{
+			displayName: 'Filter',
+			name: 'filter',
+			type: 'string',
+			default: '',
+			description:
+				'An OData filter expression that filters elements in the collection. Available fields: ID, name, description, cvssV3, publishedOn, severity, and updatedOn.',
+			routing: {
+				send: {
+					type: 'query',
+					property: '$filter',
 				},
 			},
 		},
-	},
-	{
-		displayName: 'Skip',
-		name: 'skip',
-		type: 'number',
-		displayOptions: {
-			show: {
-				...showOnlyForOdataOperations,
-				returnAll: [false],
+		{
+			displayName: 'Top',
+			name: 'top',
+			type: 'string',
+			default: '',
+			description:
+				'An OData top expression that limits the number of elements in the collection. See Microsoft documentation for supported syntax.',
+			routing: {
+				send: {
+					type: 'query',
+					property: '$top',
+				},
 			},
 		},
-		typeOptions: {
-			minValue: 1,
-			maxValue: 1000,
-		},
-		default: 50,
-		description: 'Number of results to skip',
-		routing: {
-			send: {
-				type: 'query',
-				property: '$skip',
+		{
+			displayName: 'Skip',
+			name: 'skip',
+			type: 'string',
+			default: '',
+			description:
+				'An OData skip expression that skips a number of elements in the collection. See Microsoft documentation for supported syntax.',
+			routing: {
+				send: {
+					type: 'query',
+					property: '$skip',
+				},
 			},
 		},
-	},
-];
+	],
+};

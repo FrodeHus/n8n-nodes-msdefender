@@ -116,13 +116,4 @@ This node is compatible with latest n8n versions.
 
 ## Version history
 
-- 1.6.0 (2026-01-04): Added Software resource (get all software, get by ID, get version distribution, get machines by software, get vulnerabilities by software, get missing KBs by software).
-- 1.5.0 (2026-01-04): Added Recommendation resource (get security recommendations).
-- 1.4.0 (2026-01-03): Added threat intelligence indicator operations (list indicators, submit indicator, delete indicator).
-- 1.3.0 (2026-01-03): Added Investigation resource (list investigations, get by ID, start investigation on machine).
-  Also added Indicator resource (list indicators, submit indicator, delete indicator).
-- 1.2.1 (2026-01-02): Credential test added; CI and npm-publish workflow updates; OData `getNextODataLink()` refactor.
-- 1.2.0 (2025-12-30): Added Alert operations (`getAlertById`, `updateAlert`), Remediation resources, and pre-send cleanup.
-- 1.1.0 (2025-12-29): Added missing CVE lookup and remediation task operations.
-- 1.0.2 (2025-12-26): Fixed parameter issues, improved tagging, introduced Alerts resource.
-- 1.0.0 (2025-12-23): Initial release with Advanced Query, Machine, Machine Actions, and Vulnerability operations.
+[Changelog](./CHANGELOG.md)

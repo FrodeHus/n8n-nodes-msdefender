@@ -34,7 +34,8 @@
       "dist/credentials/MsdefenderOAuth2Api.credentials.js"
     ],
     "nodes": [
-      "dist/nodes/Msdefender/Msdefender.node.js"
+      "dist/nodes/Msdefender/Msdefender.node.js",
+      "dist/nodes/Msdefender/MsdefenderTrigger.node.js"
     ]
   },
   "devDependencies": {

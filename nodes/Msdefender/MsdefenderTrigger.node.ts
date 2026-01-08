@@ -65,12 +65,59 @@ export class MsdefenderTrigger implements INodeType {
 				default: 'alertCreated',
 				description: 'The type of event to trigger on',
 			},
+			{
+				displayName: 'Lookup Data From Last ...',
+				description: 'How far back in time to look for new data',
+				name: 'lookupDataFromLast',
+				type: 'options',
+				allowArbitraryValues: true,
+				options: [
+					{
+						name: '5 Minutes',
+						value: 5,
+					},
+					{
+						name: '15 Minutes',
+						value: 15,
+					},
+					{
+						name: '30 Minutes',
+						value: 30,
+					},
+					{
+						name: '1 Hour',
+						value: 60,
+					},
+					{
+						name: 'Custom',
+						value: -1,
+					},
+				],
+				default: 5,
+			},
+			{
+				displayName: 'Minutes',
+				name: 'minutes',
+				type: 'number',
+				default: 5,
+				typeOptions: {
+					minValue: 1,
+				},
+				displayOptions: {
+					show: {
+						lookupDataFromLast: [-1],
+					},
+				},
+				description: 'The number of minutes to look back for new data',
+			},
 		],
 	};
 
 	async poll(this: IPollFunctions): Promise<INodeExecutionData[][] | null> {
 		const eventType = this.getNodeParameter('eventType') as string;
 		const nodeData = this.getWorkflowStaticData('node');
+		const lookupDataFromLast = this.getNodeParameter('lookupDataFromLast') as number;
+		const minutes = this.getNodeParameter('minutes', 5) as number;
 
 		const baseUrl = 'https://api.securitycenter.microsoft.com/';
 		let endpoint = '';
@@ -80,8 +127,10 @@ export class MsdefenderTrigger implements INodeType {
 		} else if (eventType === 'alertUpdated') {
 			endpoint = 'api/alerts?$filter=lastUpdateTime gt ';
 		}
-		const lastPollTime = (nodeData.lastPollTime as Date) || new Date(Date.now() - 60 * 1000);
-		const filterTime = lastPollTime.toISOString();
+		const lookupTime = new Date(
+			Date.now() - (lookupDataFromLast === -1 ? minutes : lookupDataFromLast) * 60000,
+		);
+		const filterTime = lookupTime.toISOString();
 		const url = `${baseUrl}${endpoint}${filterTime}`;
 		let events = [];
 		try {
@@ -94,7 +143,7 @@ export class MsdefenderTrigger implements INodeType {
 				},
 			);
 			events = responseData.value as JsonObject[];
-			nodeData.lastPollTime = new Date();
+			nodeData.lastPollTime = Date.now();
 		} catch (error) {
 			throw new NodeApiError(this.getNode(), error as JsonObject);
 		}

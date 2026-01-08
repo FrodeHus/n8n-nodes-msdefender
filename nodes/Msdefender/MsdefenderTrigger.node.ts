@@ -127,10 +127,10 @@ export class MsdefenderTrigger implements INodeType {
 		} else if (eventType === 'alertUpdated') {
 			endpoint = 'api/alerts?$filter=lastUpdateTime gt ';
 		}
-		const lastPollTime =
-			(nodeData.lastPollTime as Date) ||
-			new Date(Date.now() - (lookupDataFromLast === -1 ? minutes : lookupDataFromLast) * 60000);
-		const filterTime = lastPollTime.toISOString();
+		const lookupTime = new Date(
+			Date.now() - (lookupDataFromLast === -1 ? minutes : lookupDataFromLast) * 60000,
+		);
+		const filterTime = lookupTime.toISOString();
 		const url = `${baseUrl}${endpoint}${filterTime}`;
 		let events = [];
 		try {

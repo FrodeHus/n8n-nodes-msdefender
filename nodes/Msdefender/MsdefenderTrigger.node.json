@@ -1,0 +1,20 @@
+{
+    "node": "n8n-nodes-msdefenderTrigger",
+    "nodeVersion": "1.0",
+    "codexVersion": "1.0",
+    "categories": [
+        "Development"
+    ],
+    "resources": {
+        "credentialDocumentation": [
+            {
+                "url": "https://learn.microsoft.com/en-us/entra/identity-platform/v2-oauth2-client-creds-grant-flow"
+            }
+        ],
+        "primaryDocumentation": [
+            {
+                "url": "https://github.com/frodehus/n8n-nodes-msdefender"
+            }
+        ]
+    }
+}

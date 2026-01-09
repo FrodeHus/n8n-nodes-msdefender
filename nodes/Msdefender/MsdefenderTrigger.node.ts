@@ -18,9 +18,9 @@ export class MsdefenderTrigger implements INodeType {
 		usableAsTool: true,
 		version: 1,
 		subtitle: '={{"Trigger: " + $parameter["eventType"]}}',
-		description: 'Triggers workflows on Microsoft Defender events',
+		description: 'Triggers workflows on Microsoft Defender for Endpoint events',
 		defaults: {
-			name: 'Microsoft Defender Trigger',
+			name: 'Microsoft Defender for Endpoint Trigger',
 		},
 		inputs: [],
 		outputs: [NodeConnectionTypes.Main],

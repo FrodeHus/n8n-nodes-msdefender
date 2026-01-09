@@ -2,10 +2,10 @@ import { NodeConnectionTypes, type INodeType, type INodeTypeDescription } from '
 import { incidentDescription } from './resources/incident';
 import { getDeterminationValues } from './resources/incident/helpers';
 
-export class MsdefenderXdr implements INodeType {
+export class Msdefenderxdr implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Microsoft Defender XDR',
-		name: 'msdefenderXdr',
+		name: 'msdefenderxdr',
 		icon: {
 			light: 'file:../../icons/ms-defender.svg',
 			dark: 'file:../../icons/ms-defender.dark.svg',

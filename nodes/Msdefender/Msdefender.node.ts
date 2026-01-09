@@ -10,6 +10,7 @@ import { investigationDescription } from './resources/investigation';
 import { indicatorDescription } from './resources/indicator';
 import { recommendationDescription } from './resources/recommendation';
 import { softwareDescription } from './resources/software';
+import { getDeterminationValues } from './resources/incident/helpers';
 
 export class Msdefender implements INodeType {
 	description: INodeTypeDescription = {
@@ -125,5 +126,10 @@ export class Msdefender implements INodeType {
 			...softwareDescription,
 			...indicatorDescription,
 		],
+	};
+	methods = {
+		loadOptions: {
+			getDeterminationValues,
+		},
 	};
 }

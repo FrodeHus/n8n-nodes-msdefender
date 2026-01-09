@@ -8,12 +8,12 @@
     "resources": {
         "credentialDocumentation": [
             {
-                "url": "https://learn.microsoft.com/en-us/entra/identity-platform/v2-oauth2-client-creds-grant-flow"
+                "url": "https://github.com/FrodeHus/n8n-nodes-msdefender?tab=readme-ov-file#credentials"
             }
         ],
         "primaryDocumentation": [
             {
-                "url": "https://github.com/frodehus/n8n-nodes-msdefender"
+                "url": "https://github.com/FrodeHus/n8n-nodes-msdefender?tab=readme-ov-file#n8n-nodes-msdefender"
             }
         ]
     }

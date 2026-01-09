@@ -8,12 +8,12 @@
     "resources": {
         "credentialDocumentation": [
             {
-                "url": "https://github.com/FrodeHus/n8n-nodes-msdefender#credentials"
+                "url": "https://github.com/FrodeHus/n8n-nodes-msdefender?tab=readme-ov-file#n8n-nodes-msdefender"
             }
         ],
         "primaryDocumentation": [
             {
-                "url": "https://github.com/FrodeHus/n8n-nodes-msdefender#readme"
+                "url": "https://github.com/FrodeHus/n8n-nodes-msdefender?tab=readme-ov-file#readme"
             }
         ]
     }

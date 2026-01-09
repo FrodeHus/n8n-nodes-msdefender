@@ -5,13 +5,14 @@ export class MsdefenderxdrOAuth2Api implements ICredentialType {
 
 	extends = ['oAuth2Api'];
 
-	displayName = 'Msdefenderxdr OAuth2 API';
+	displayName = 'Microsoft Defender XDR OAuth2 API';
 	icon: Icon = {
 		light: 'file:../icons/ms-defender.svg',
 		dark: 'file:../icons/ms-defender.dark.svg',
 	};
 	// Link to your community node's README
-	documentationUrl = 'https://github.com/org/-msdefenderxdr?tab=readme-ov-file#credentials';
+	documentationUrl =
+		'https://github.com/FrodeHus/n8n-nodes-msdefender?tab=readme-ov-file#credentials';
 	test: ICredentialTestRequest = {
 		request: {
 			method: 'GET',

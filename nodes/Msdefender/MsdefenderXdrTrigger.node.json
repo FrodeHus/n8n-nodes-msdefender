@@ -1,0 +1,20 @@
+{
+    "node": "n8n-nodes-msdefenderTrigger",
+    "nodeVersion": "1.0",
+    "codexVersion": "1.0",
+    "categories": [
+        "Development"
+    ],
+    "resources": {
+        "credentialDocumentation": [
+            {
+                "url": "https://github.com/FrodeHus/n8n-nodes-msdefender#credentials"
+            }
+        ],
+        "primaryDocumentation": [
+            {
+                "url": "https://github.com/FrodeHus/n8n-nodes-msdefender#readme"
+            }
+        ]
+    }
+}

@@ -8,25 +8,25 @@ import {
 	NodeConnectionTypes,
 } from 'n8n-workflow';
 
-export class MsdefenderTrigger implements INodeType {
+export class MsdefenderXdrTrigger implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'Microsoft Defender for Endpoint Trigger',
-		name: 'msdefenderTrigger',
+		displayName: 'Microsoft Defender XDR Trigger',
+		name: 'msdefenderXdrTrigger',
 		icon: 'file:../../icons/ms-defender.svg',
 		group: ['trigger'],
 		polling: true,
 		usableAsTool: true,
 		version: 1,
 		subtitle: '={{"Trigger: " + $parameter["eventType"]}}',
-		description: 'Triggers workflows on Microsoft Defender for Endpoint events',
+		description: 'Triggers workflows on Microsoft Defender XDR events',
 		defaults: {
-			name: 'Microsoft Defender for Endpoint Trigger',
+			name: 'Microsoft Defender XDR Trigger',
 		},
 		inputs: [],
 		outputs: [NodeConnectionTypes.Main],
 		credentials: [
 			{
-				name: 'msdefenderOAuth2Api',
+				name: 'msdefenderxdrOAuth2Api',
 				required: true,
 				displayOptions: {
 					show: {
@@ -54,15 +54,15 @@ export class MsdefenderTrigger implements INodeType {
 				type: 'options',
 				options: [
 					{
-						name: 'Alert Created',
-						value: 'alertCreated',
+						name: 'Incident Created',
+						value: 'incidentCreated',
 					},
 					{
-						name: 'Alert Updated',
-						value: 'alertUpdated',
+						name: 'Incident Updated',
+						value: 'incidentUpdated',
 					},
 				],
-				default: 'alertCreated',
+				default: 'incidentCreated',
 				description: 'The type of event to trigger on',
 			},
 			{
@@ -119,13 +119,13 @@ export class MsdefenderTrigger implements INodeType {
 		const lookupDataFromLast = this.getNodeParameter('lookupDataFromLast') as number;
 		const minutes = this.getNodeParameter('minutes', 5) as number;
 
-		const baseUrl = 'https://api.securitycenter.microsoft.com/';
+		const baseUrl = 'https://api.security.microsoft.com/';
 		let endpoint = '';
 
-		if (eventType === 'alertCreated') {
-			endpoint = 'api/alerts?$filter=alertCreationTime gt ';
-		} else if (eventType === 'alertUpdated') {
-			endpoint = 'api/alerts?$filter=lastUpdateTime gt ';
+		if (eventType === 'incidentCreated') {
+			endpoint = 'api/incidents?$filter=createdTime gt ';
+		} else if (eventType === 'incidentUpdated') {
+			endpoint = 'api/incidents?$filter=lastUpdateTime gt ';
 		}
 		const lookupTime = new Date(
 			Date.now() - (lookupDataFromLast === -1 ? minutes : lookupDataFromLast) * 60000,
@@ -136,7 +136,7 @@ export class MsdefenderTrigger implements INodeType {
 		try {
 			const responseData = await this.helpers.httpRequestWithAuthentication.call(
 				this,
-				'msdefenderOAuth2Api',
+				'msdefenderxdrOAuth2Api',
 				{
 					method: 'GET',
 					url,

@@ -31,11 +31,14 @@
     "n8nNodesApiVersion": 1,
     "strict": true,
     "credentials": [
-      "dist/credentials/MsdefenderOAuth2Api.credentials.js"
+      "dist/credentials/MsdefenderOAuth2Api.credentials.js",
+      "dist/credentials/MsdefenderxdrOAuth2Api.credentials.js"
     ],
     "nodes": [
       "dist/nodes/Msdefender/Msdefender.node.js",
-      "dist/nodes/Msdefender/MsdefenderTrigger.node.js"
+      "dist/nodes/Msdefender/Msdefenderxdr.node.js",
+      "dist/nodes/Msdefender/MsdefenderTrigger.node.js",
+      "dist/nodes/Msdefender/MsdefenderXdrTrigger.node.js"
     ]
   },
   "devDependencies": {

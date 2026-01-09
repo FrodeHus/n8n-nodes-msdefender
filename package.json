@@ -32,7 +32,7 @@
     "strict": true,
     "credentials": [
       "dist/credentials/MsdefenderOAuth2Api.credentials.js",
-      "dist/credentials/MsdefenderXdrOAuth2Api.credentials.js"
+      "dist/credentials/MsdefenderxdrOAuth2Api.credentials.js"
     ],
     "nodes": [
       "dist/nodes/Msdefender/Msdefender.node.js",

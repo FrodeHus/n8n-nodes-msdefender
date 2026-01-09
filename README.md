@@ -97,15 +97,21 @@ Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes
 To use this node, you need to set up an Entra ID (Azure AD) application and obtain the necessary credentials to access the Microsoft Defender API.
 
 1. Register an application in the [Azure Portal](https://portal.azure.com/).
-2. Assign the required API permissions to the application for Microsoft Defender (WindowsDefenderATP).
-    - Application permissions: `AdvancedQuery.Read.All`, `Machine.ReadWrite.All`, `Score.Read.All`, `Machine.Isolate`, `Vulnerability.Read.All`, `SecurityRecommendation.Read.All`, `Machine.Scan`, `Machine.Offboard`
-3. Assign the required API permissions to the application for Microsoft Defender XDR (Microsoft Threat Protection).
-    - Application permissions: `Incidents.ReadWrite.All`
+2. Assign the required API application permissions to the application for Microsoft Defender (WindowsDefenderATP).
+    - `AdvancedQuery.Read.All`
+    - `Machine.ReadWrite.All`
+    - `Score.Read.All`
+    - `Machine.Isolate`
+    - `Vulnerability.Read.All`
+    - `SecurityRecommendation.Read.All`
+    - `Machine.Scan`
+    - `Machine.Offboard`
+3. Assign the required API application permissions to the application for Microsoft Defender XDR (Microsoft Threat Protection).
+    - `Incidents.ReadWrite.All`
 4. Grant admin consent for the permissions.
 5. Generate a client secret for the application.
 6. Note down the Application (client) ID, Directory (tenant) ID, and client secret.
 
-![Entra ID App Permissions](/images/app-permissions.png)
 
 When configuring the Microsoft Defender node in n8n, use the following credentials:
 

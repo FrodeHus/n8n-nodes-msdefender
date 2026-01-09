@@ -6,17 +6,17 @@ const showOnlyForIncidentGetOne = {
 }
 
 export const getOneIncidentDescription: INodeProperties[] = [
-    {
-        displayName: 'Incident ID',
-        name: 'incidentId',
-        type: 'string',
-        required: true,
-        default: '',
-        description: 'The ID of the incident to retrieve',
-        displayOptions: {
-            show: {
-                ...showOnlyForIncidentGetOne,
-            },
-        },
-    },
+	{
+		displayName: 'Incident ID',
+		name: 'incidentId',
+		type: 'number',
+		required: true,
+		default: '',
+		description: 'The ID of the incident to retrieve',
+		displayOptions: {
+			show: {
+				...showOnlyForIncidentGetOne,
+			},
+		},
+	},
 ];

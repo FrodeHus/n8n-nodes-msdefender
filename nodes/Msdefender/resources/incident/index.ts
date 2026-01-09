@@ -8,45 +8,51 @@ const showOnlyForIncident = {
 }
 
 export const incidentDescription: INodeProperties[] = [
-    {
-        displayName: 'Operation',
-        name: 'operation',
-        type: 'options',
-        noDataExpression: true,
-        displayOptions: {
-            show: {
-                ...showOnlyForIncident,
-            },
-        },
-        options: [
-            {
-                name: 'Get',
-                value: 'get',
-                description: 'Get a single incident',
-                action: 'Get an incident',
-            },
-            {
-                name: 'Get Many',
-                value: 'getMany',
-                description: 'Get many incidents',
-                action: 'Get many incidents',
-                routing: {
-                    request: {
-                        method: 'GET',
-                        url: '/api/incidents',
-                    },
-                },
-            },
-            {
-                name: 'Update',
-                value: 'update',
-                description: 'Update an incident',
-                action: 'Update an incident',
-            }
-        ],
-        default: 'getMany',
-    },
-    ...getManyIncidentDescription,
-    ...getOneIncidentDescription,
-    ...updateIncidentDescription
+	{
+		displayName: 'Operation',
+		name: 'operation',
+		type: 'options',
+		noDataExpression: true,
+		displayOptions: {
+			show: {
+				...showOnlyForIncident,
+			},
+		},
+		options: [
+			{
+				name: 'Get',
+				value: 'get',
+				description: 'Get a single incident',
+				action: 'Get an incident',
+				routing: {
+					request: {
+						method: 'GET',
+						url: '=/api/incidents/{{incidentId}}',
+					},
+				},
+			},
+			{
+				name: 'Get Many',
+				value: 'getMany',
+				description: 'Get many incidents',
+				action: 'Get many incidents',
+				routing: {
+					request: {
+						method: 'GET',
+						url: '/api/incidents',
+					},
+				},
+			},
+			{
+				name: 'Update',
+				value: 'update',
+				description: 'Update an incident',
+				action: 'Update an incident',
+			},
+		],
+		default: 'getMany',
+	},
+	...getManyIncidentDescription,
+	...getOneIncidentDescription,
+	...updateIncidentDescription,
 ];  

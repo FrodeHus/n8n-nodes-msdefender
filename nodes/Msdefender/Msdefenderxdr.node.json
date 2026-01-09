@@ -6,12 +6,12 @@
 	"resources": {
 		"credentialDocumentation": [
 			{
-				"url": "https://github.com/FrodeHus/n8n-nodes-msdefenderxdr#credentials"
+				"url": "https://github.com/FrodeHus/n8n-nodes-msdefender#credentials"
 			}
 		],
 		"primaryDocumentation": [
 			{
-				"url": "https://github.com/FrodeHus/n8n-nodes-msdefenderxdr#readme"
+				"url": "https://github.com/FrodeHus/n8n-nodes-msdefender#readme"
 			}
 		]
 	}

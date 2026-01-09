@@ -8,7 +8,7 @@ import {
 	NodeConnectionTypes,
 } from 'n8n-workflow';
 
-export class MsdefenderXDRTrigger implements INodeType {
+export class MsdefenderXdrTrigger implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Microsoft Defender XDR Trigger',
 		name: 'msdefenderXdrTrigger',

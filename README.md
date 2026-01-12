@@ -121,9 +121,13 @@ When configuring the Microsoft Defender node in n8n, use the following credentia
 
 There are two separate credentials for Microsoft Defender and Microsoft Defender XDR, so be sure to set up both if you plan to use both nodes.
 
+You can re-use the same Azure AD application for both credentials, just ensure it has the necessary permissions assigned for each API.
+
+If you added permissions to your Azure AD application, remember to re-grant admin consent and update the credentials in n8n.
+
 ## Compatibility
 
-This node is compatible with latest n8n versions.
+Tested with recent n8n 2.x releases. Older versions may work, but are not guaranteed.
 
 ## Usage
 
@@ -132,6 +136,8 @@ This node is compatible with latest n8n versions.
 ## Resources
 
 - [n8n community nodes documentation](https://docs.n8n.io/integrations/#community-nodes)
+- [Microsoft Defender for Endpoint API documentation](https://learn.microsoft.com/en-us/microsoft-365/security/defender-endpoint/apis-intro?view=o365-worldwide)
+- [Microsoft Defender XDR API documentation](https://learn.microsoft.com/en-us/microsoft-365/security/defender/api-overview?view=o365-worldwide)
 
 ## Version history
 

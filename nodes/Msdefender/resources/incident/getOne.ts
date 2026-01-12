@@ -11,7 +11,7 @@ export const getOneIncidentDescription: INodeProperties[] = [
 		name: 'incidentId',
 		type: 'number',
 		required: true,
-		default: '',
+		default: 0,
 		description: 'The ID of the incident to retrieve',
 		displayOptions: {
 			show: {

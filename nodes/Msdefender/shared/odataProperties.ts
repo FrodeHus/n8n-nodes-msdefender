@@ -24,8 +24,8 @@ export const commonOdataProperties: INodeProperties = {
 		{
 			displayName: 'Top',
 			name: 'top',
-			type: 'string',
-			default: '',
+			type: 'number',
+			default: 10,
 			description:
 				'An OData top expression that limits the number of elements in the collection. See Microsoft documentation for supported syntax.',
 			routing: {
@@ -38,8 +38,8 @@ export const commonOdataProperties: INodeProperties = {
 		{
 			displayName: 'Skip',
 			name: 'skip',
-			type: 'string',
-			default: '',
+			type: 'number',
+			default: 0,
 			description:
 				'An OData skip expression that skips a number of elements in the collection. See Microsoft documentation for supported syntax.',
 			routing: {

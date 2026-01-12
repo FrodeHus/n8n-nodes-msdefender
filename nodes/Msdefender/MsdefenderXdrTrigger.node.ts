@@ -115,7 +115,6 @@ export class MsdefenderXdrTrigger implements INodeType {
 
 	async poll(this: IPollFunctions): Promise<INodeExecutionData[][] | null> {
 		const eventType = this.getNodeParameter('eventType') as string;
-		const nodeData = this.getWorkflowStaticData('node');
 		const lookupDataFromLast = this.getNodeParameter('lookupDataFromLast') as number;
 		const minutes = this.getNodeParameter('minutes', 5) as number;
 
@@ -143,7 +142,6 @@ export class MsdefenderXdrTrigger implements INodeType {
 				},
 			);
 			events = responseData.value as JsonObject[];
-			nodeData.lastPollTime = Date.now();
 		} catch (error) {
 			throw new NodeApiError(this.getNode(), error as JsonObject);
 		}

@@ -100,7 +100,7 @@ export class Msdefender implements INodeType {
 						value: 'recommendation',
 					},
 					{
-						name: 'Remedation',
+						name: 'Remediation',
 						value: 'remediation',
 					},
 					{

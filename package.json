@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-msdefender",
-  "version": "1.8.1",
+  "version": "1.8.2",
   "description": "Integration with Microsoft Defender API",
   "license": "MIT",
   "homepage": "",

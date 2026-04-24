@@ -25,4 +25,23 @@ export const advancedQueryRunDescription: INodeProperties[] = [
 		},
 		description: 'KQL query to run',
 	},
+	{
+		displayName: 'Timespan',
+		name: 'timespan',
+		type: 'string',
+		displayOptions: {
+			show: {
+				...showOnlyForAdvancedQueryRun,
+			},
+		},
+		default: 'P30D',
+		routing: {
+			send: {
+				type: 'body',
+				property: 'Timespan',
+			},
+		},
+		description:
+			'ISO 8601 duration for the query time range (e.g. P30D for 30 days, P7D for 7 days). Maximum is P30D.',
+	},
 ];

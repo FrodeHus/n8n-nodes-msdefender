@@ -11,6 +11,7 @@ import { indicatorDescription } from './resources/indicator';
 import { recommendationDescription } from './resources/recommendation';
 import { softwareDescription } from './resources/software';
 import { getDeterminationValues } from './resources/incident/helpers';
+import { getAlertDeterminationValues } from './resources/alert/helpers';
 
 export class Msdefender implements INodeType {
 	description: INodeTypeDescription = {
@@ -36,7 +37,16 @@ export class Msdefender implements INodeType {
 				required: true,
 				displayOptions: {
 					show: {
-						authentication: ['oAuth2'],
+						authentication: ['mdeOAuth2'],
+					},
+				},
+			},
+			{
+				name: 'msdefenderGraphOAuth2Api',
+				required: true,
+				displayOptions: {
+					show: {
+						authentication: ['graphOAuth2'],
 					},
 				},
 			},
@@ -55,11 +65,17 @@ export class Msdefender implements INodeType {
 				type: 'options',
 				options: [
 					{
-						name: 'OAuth2',
-						value: 'oAuth2',
+						name: 'Defender for Endpoint (MDE) API',
+						value: 'mdeOAuth2',
+					},
+					{
+						name: 'Microsoft Graph Security API',
+						value: 'graphOAuth2',
 					},
 				],
-				default: 'oAuth2',
+				default: 'mdeOAuth2',
+				description:
+					'Select "Defender for Endpoint" for most resources. Select "Microsoft Graph Security API" for Advanced Query (hunting).',
 			},
 			{
 				displayName: 'Resource',
@@ -130,6 +146,7 @@ export class Msdefender implements INodeType {
 	methods = {
 		loadOptions: {
 			getDeterminationValues,
+			getAlertDeterminationValues,
 		},
 	};
 }

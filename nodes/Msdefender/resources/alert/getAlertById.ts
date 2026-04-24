@@ -19,7 +19,8 @@ export const getAlertByIdDescription: INodeProperties[] = [
         routing: {
             request: {
                 method: 'GET',
-                url: '=/api/alerts/{{ $parameter.alertId }}',
+                baseURL: 'https://graph.microsoft.com/',
+                url: '=/v1.0/security/alerts_v2/{{ $parameter.alertId }}',
             },
         },
     },

@@ -27,7 +27,8 @@ export const incidentDescription: INodeProperties[] = [
 				routing: {
 					request: {
 						method: 'GET',
-						url: '=/api/incidents/{{incidentId}}',
+						baseURL: 'https://graph.microsoft.com/',
+						url: '=/v1.0/security/incidents/{{incidentId}}',
 					},
 				},
 			},
@@ -39,7 +40,8 @@ export const incidentDescription: INodeProperties[] = [
 				routing: {
 					request: {
 						method: 'GET',
-						url: '/api/incidents',
+						baseURL: 'https://graph.microsoft.com/',
+						url: '/v1.0/security/incidents',
 					},
 				},
 			},

@@ -20,7 +20,7 @@ export const advancedQueryRunDescription: INodeProperties[] = [
 		routing: {
 			send: {
 				type: 'body',
-				property: 'Query',
+				property: 'query',
 			},
 		},
 		description: 'KQL query to run',
@@ -38,7 +38,7 @@ export const advancedQueryRunDescription: INodeProperties[] = [
 		routing: {
 			send: {
 				type: 'body',
-				property: 'Timespan',
+				property: 'timespan',
 			},
 		},
 		description:

@@ -18,7 +18,7 @@ export class MsdefenderGraphOAuth2Api implements ICredentialType {
 		request: {
 			method: 'GET',
 			baseURL: 'https://graph.microsoft.com',
-			url: '/beta/security',
+			url: '/v1.0/security/alerts_v2?$top=1',
 		},
 	};
 

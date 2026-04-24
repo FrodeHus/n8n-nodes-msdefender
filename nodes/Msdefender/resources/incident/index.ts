@@ -28,7 +28,7 @@ export const incidentDescription: INodeProperties[] = [
 					request: {
 						method: 'GET',
 						baseURL: 'https://graph.microsoft.com/',
-						url: '=/v1.0/security/incidents/{{incidentId}}',
+						url: '=/v1.0/security/incidents/{{ $parameter.incidentId }}',
 					},
 				},
 			},

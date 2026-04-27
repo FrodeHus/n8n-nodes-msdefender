@@ -1,26 +1,36 @@
 import type { Icon, ICredentialTestRequest, ICredentialType, INodeProperties } from 'n8n-workflow';
 
-export class MsdefenderxdrOAuth2Api implements ICredentialType {
-	name = 'msdefenderxdrOAuth2Api';
+export class MsdefenderGraphOAuth2Api implements ICredentialType {
+	name = 'msdefenderGraphOAuth2Api';
 
 	extends = ['oAuth2Api'];
 
-	displayName = 'Microsoft Defender XDR OAuth2 API';
+	displayName = 'Microsoft Defender Graph OAuth2 API';
 	icon: Icon = {
 		light: 'file:../icons/ms-defender.svg',
 		dark: 'file:../icons/ms-defender.dark.svg',
 	};
-	// Link to your community node's README
+
 	documentationUrl =
-		'https://github.com/FrodeHus/n8n-nodes-msdefender?tab=readme-ov-file#credentials';
+		'https://learn.microsoft.com/en-us/graph/permissions-reference#threathuntingreadall';
+
 	test: ICredentialTestRequest = {
 		request: {
 			method: 'GET',
-			baseURL: 'https://api.security.microsoft.com',
-			url: '/api/incidents?$top=1',
+			baseURL: 'https://graph.microsoft.com',
+			url: '/v1.0/security/alerts_v2?$top=1',
 		},
 	};
+
 	properties: INodeProperties[] = [
+		{
+			displayName: 'Tenant ID',
+			name: 'tenantId',
+			type: 'string',
+			default: '',
+			placeholder: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
+			description: 'The Azure Active Directory tenant ID (GUID) or domain name',
+		},
 		{
 			displayName: 'Grant Type',
 			name: 'grantType',
@@ -30,8 +40,8 @@ export class MsdefenderxdrOAuth2Api implements ICredentialType {
 		{
 			displayName: 'Access Token URL',
 			name: 'accessTokenUrl',
-			type: 'string',
-			default: 'https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token',
+			type: 'hidden',
+			default: '=https://login.microsoftonline.com/{{$self.tenantId}}/oauth2/v2.0/token',
 		},
 		{
 			displayName: 'Auth URI Query Parameters',
@@ -43,7 +53,7 @@ export class MsdefenderxdrOAuth2Api implements ICredentialType {
 			displayName: 'Scope',
 			name: 'scope',
 			type: 'hidden',
-			default: 'https://api.security.microsoft.com/.default',
+			default: 'https://graph.microsoft.com/.default',
 		},
 		{
 			displayName: 'Authentication',

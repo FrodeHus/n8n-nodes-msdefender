@@ -26,7 +26,7 @@ export class MsdefenderXdrTrigger implements INodeType {
 		outputs: [NodeConnectionTypes.Main],
 		credentials: [
 			{
-				name: 'msdefenderxdrOAuth2Api',
+				name: 'msdefenderGraphOAuth2Api',
 				required: true,
 				displayOptions: {
 					show: {
@@ -118,13 +118,13 @@ export class MsdefenderXdrTrigger implements INodeType {
 		const lookupDataFromLast = this.getNodeParameter('lookupDataFromLast') as number;
 		const minutes = this.getNodeParameter('minutes', 5) as number;
 
-		const baseUrl = 'https://api.security.microsoft.com/';
+		const baseUrl = 'https://graph.microsoft.com/';
 		let endpoint = '';
 
 		if (eventType === 'incidentCreated') {
-			endpoint = 'api/incidents?$filter=createdTime gt ';
+			endpoint = 'v1.0/security/incidents?$filter=createdDateTime gt ';
 		} else if (eventType === 'incidentUpdated') {
-			endpoint = 'api/incidents?$filter=lastUpdateTime gt ';
+			endpoint = 'v1.0/security/incidents?$filter=lastUpdateDateTime gt ';
 		}
 		const lookupTime = new Date(
 			Date.now() - (lookupDataFromLast === -1 ? minutes : lookupDataFromLast) * 60000,
@@ -135,7 +135,7 @@ export class MsdefenderXdrTrigger implements INodeType {
 		try {
 			const responseData = await this.helpers.httpRequestWithAuthentication.call(
 				this,
-				'msdefenderxdrOAuth2Api',
+				'msdefenderGraphOAuth2Api',
 				{
 					method: 'GET',
 					url,

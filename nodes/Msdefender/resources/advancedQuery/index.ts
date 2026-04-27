@@ -23,7 +23,8 @@ export const advancedQueryDescription: INodeProperties[] = [
 				routing: {
 					request: {
 						method: 'POST',
-						url: '/api/advancedqueries/run',
+						baseURL: 'https://graph.microsoft.com/',
+						url: '/v1.0/security/runHuntingQuery',
 					},
 				},
 			},

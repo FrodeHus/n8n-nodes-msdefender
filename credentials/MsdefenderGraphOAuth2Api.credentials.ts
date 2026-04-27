@@ -24,6 +24,14 @@ export class MsdefenderGraphOAuth2Api implements ICredentialType {
 
 	properties: INodeProperties[] = [
 		{
+			displayName: 'Tenant ID',
+			name: 'tenantId',
+			type: 'string',
+			default: '',
+			placeholder: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
+			description: 'The Azure Active Directory tenant ID (GUID) or domain name',
+		},
+		{
 			displayName: 'Grant Type',
 			name: 'grantType',
 			type: 'hidden',
@@ -32,8 +40,8 @@ export class MsdefenderGraphOAuth2Api implements ICredentialType {
 		{
 			displayName: 'Access Token URL',
 			name: 'accessTokenUrl',
-			type: 'string',
-			default: 'https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token',
+			type: 'hidden',
+			default: '=https://login.microsoftonline.com/{{$self.tenantId}}/oauth2/v2.0/token',
 		},
 		{
 			displayName: 'Auth URI Query Parameters',

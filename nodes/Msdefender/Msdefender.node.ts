@@ -10,6 +10,7 @@ import { investigationDescription } from './resources/investigation';
 import { indicatorDescription } from './resources/indicator';
 import { recommendationDescription } from './resources/recommendation';
 import { softwareDescription } from './resources/software';
+import { incidentDescription } from './resources/incident';
 import { getDeterminationValues } from './resources/incident/helpers';
 import { getAlertDeterminationValues } from './resources/alert/helpers';
 
@@ -75,7 +76,7 @@ export class Msdefender implements INodeType {
 				],
 				default: 'mdeOAuth2',
 				description:
-					'Select "Defender for Endpoint" for most resources. Select "Microsoft Graph Security API" for Advanced Query (hunting).',
+				'Select "Defender for Endpoint" for most resources. Select "Microsoft Graph Security API" for Advanced Query, Alert, and Incident operations.',
 			},
 			{
 				displayName: 'Resource',
@@ -86,10 +87,20 @@ export class Msdefender implements INodeType {
 					{
 						name: 'Advanced Query',
 						value: 'advancedQuery',
+						displayOptions: {
+							show: {
+								authentication: ['graphOAuth2'],
+							},
+						},
 					},
 					{
 						name: 'Alert',
 						value: 'defenderAlert',
+						displayOptions: {
+							show: {
+								authentication: ['graphOAuth2'],
+							},
+						},
 					},
 					{
 						name: 'Exposure Score',
@@ -98,6 +109,15 @@ export class Msdefender implements INodeType {
 					{
 						name: 'Indicator',
 						value: 'indicator',
+					},
+					{
+						name: 'Incident',
+						value: 'incident',
+						displayOptions: {
+							show: {
+								authentication: ['graphOAuth2'],
+							},
+						},
 					},
 					{
 						name: 'Investigation',
@@ -131,6 +151,7 @@ export class Msdefender implements INodeType {
 				default: 'advancedQuery',
 			},
 			...alertDescription,
+			...incidentDescription,
 			...machineDescription,
 			...advancedQueryDescription,
 			...exposureDescription,

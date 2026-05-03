@@ -107,10 +107,6 @@ export class Msdefender implements INodeType {
 						value: 'exposure',
 					},
 					{
-						name: 'Indicator',
-						value: 'indicator',
-					},
-					{
 						name: 'Incident',
 						value: 'incident',
 						displayOptions: {
@@ -118,6 +114,10 @@ export class Msdefender implements INodeType {
 								authentication: ['graphOAuth2'],
 							},
 						},
+					},
+					{
+						name: 'Indicator',
+						value: 'indicator',
 					},
 					{
 						name: 'Investigation',

@@ -9,9 +9,9 @@ export const updateIncidentDescription: INodeProperties[] = [
 	{
 		displayName: 'Incident ID',
 		name: 'incidentId',
-		type: 'number',
+		type: 'string',
 		required: true,
-		default: 0,
+		default: '',
 		description: 'The ID of the incident to update',
 		displayOptions: {
 			show: {
@@ -21,7 +21,8 @@ export const updateIncidentDescription: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'PATCH',
-				url: '=/api/incidents/{{ $parameter.incidentId }}',
+				baseURL: 'https://graph.microsoft.com/',
+				url: '=/v1.0/security/incidents/{{ $parameter.incidentId }}',
 			},
 		},
 	},
@@ -52,15 +53,15 @@ export const updateIncidentDescription: INodeProperties[] = [
 				options: [
 					{
 						name: 'False Positive',
-						value: 'FalsePositive',
+						value: 'falsePositive',
 					},
 					{
 						name: 'True Positive',
-						value: 'TruePositive',
+						value: 'truePositive',
 					},
 					{
-						name: 'Informational Expected Activity',
-						value: 'InformationalExpectedActivity',
+						name: 'Informational / Expected Activity',
+						value: 'informationalExpectedActivity',
 					},
 				],
 				routing: {
@@ -69,7 +70,7 @@ export const updateIncidentDescription: INodeProperties[] = [
 						property: 'classification',
 					},
 				},
-				default: 'FalsePositive',
+				default: 'falsePositive',
 				description: 'The new classification of the incident',
 			},
 			{
@@ -77,11 +78,11 @@ export const updateIncidentDescription: INodeProperties[] = [
 				name: 'comment',
 				type: 'string',
 				default: '',
-				description: 'Comment to add to the incident',
+				description: 'Resolution comment explaining the outcome of the incident',
 				routing: {
 					send: {
 						type: 'body',
-						property: 'comment',
+						property: 'resolvingComment',
 					},
 				},
 			},
@@ -112,19 +113,19 @@ export const updateIncidentDescription: INodeProperties[] = [
 				options: [
 					{
 						name: 'Active',
-						value: 'Active',
+						value: 'active',
+					},
+					{
+						name: 'Awaiting Action',
+						value: 'awaitingAction',
 					},
 					{
 						name: 'In Progress',
-						value: 'InProgress',
+						value: 'inProgress',
 					},
 					{
 						name: 'Resolved',
-						value: 'Resolved',
-					},
-					{
-						name: 'Redirected',
-						value: 'Redirected',
+						value: 'resolved',
 					},
 				],
 				routing: {
@@ -134,7 +135,7 @@ export const updateIncidentDescription: INodeProperties[] = [
 					},
 				},
 
-				default: 'Active',
+				default: 'active',
 				description: 'The new status of the incident',
 			},
 		],

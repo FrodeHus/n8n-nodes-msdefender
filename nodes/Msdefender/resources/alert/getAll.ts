@@ -8,23 +8,6 @@ const showOnlyForGetAllAlerts = {
 
 export const getAllAlertsDescription: INodeProperties[] = [
 	{
-		displayName: 'Expand Evidence Details',
-		name: 'expandEvidenceDetails',
-		type: 'boolean',
-		displayOptions: {
-			show: showOnlyForGetAllAlerts,
-		},
-		default: false,
-		description: 'Whether to expand evidence details in the alert response',
-		routing: {
-			send: {
-				type: 'query',
-				property: '$expand',
-				value: 'evidence',
-			},
-		},
-	},
-	{
 		...commonOdataProperties,
 		displayOptions: {
 			show: showOnlyForGetAllAlerts,

@@ -20,9 +20,9 @@ export class Msdefenderxdr implements INodeType {
 		usableAsTool: true,
 		inputs: [NodeConnectionTypes.Main],
 		outputs: [NodeConnectionTypes.Main],
-		credentials: [{ name: 'msdefenderxdrOAuth2Api', required: true }],
+		credentials: [{ name: 'msdefenderGraphOAuth2Api', required: true }],
 		requestDefaults: {
-			baseURL: 'https://api.security.microsoft.com/',
+			baseURL: 'https://graph.microsoft.com/',
 			headers: {
 				Accept: 'application/json',
 				'Content-Type': 'application/json',

@@ -19,7 +19,8 @@ export const updateAlertDescription: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'PATCH',
-				url: '=/api/alerts/{{ $parameter.alertId }}',
+				baseURL: 'https://graph.microsoft.com/',
+				url: '=/v1.0/security/alerts_v2/{{ $parameter.alertId }}',
 			},
 		},
 	},
@@ -39,14 +40,11 @@ export const updateAlertDescription: INodeProperties[] = [
 				type: 'string',
 				default: '',
 				placeholder: 'someone@somewhere.com',
-				typeOptions: {
-					format: 'email',
-				},
 				description: 'The user assigned to the alert',
 				routing: {
 					send: {
 						type: 'body',
-						property: 'AssignedTo',
+						property: 'assignedTo',
 					},
 				},
 			},
@@ -57,36 +55,23 @@ export const updateAlertDescription: INodeProperties[] = [
 				options: [
 					{
 						name: 'False Positive',
-						value: 'FalsePositive',
+						value: 'falsePositive',
 					},
 					{
 						name: 'True Positive',
-						value: 'TruePositive',
+						value: 'truePositive',
 					},
 					{
-						name: 'Benign Positive',
-						value: 'InformationalExpectedActivity',
+						name: 'Informational / Expected Activity',
+						value: 'informationalExpectedActivity',
 					},
 				],
-				default: 'FalsePositive',
+				default: 'falsePositive',
 				description: 'The new classification of the alert',
 				routing: {
 					send: {
 						type: 'body',
-						property: 'Classification',
-					},
-				},
-			},
-			{
-				displayName: 'Comment',
-				name: 'comment',
-				type: 'string',
-				default: '',
-				description: 'Comments regarding the alert update',
-				routing: {
-					send: {
-						type: 'body',
-						property: 'Comment',
+						property: 'classification',
 					},
 				},
 			},
@@ -96,9 +81,8 @@ export const updateAlertDescription: INodeProperties[] = [
 				type: 'options',
 				typeOptions: {
 					loadOptionsDependsOn: ['updateFields.classification'],
-					loadOptionsMethod: 'getDeterminationValues',
+					loadOptionsMethod: 'getAlertDeterminationValues',
 				},
-
 				routing: {
 					send: {
 						type: 'body',
@@ -111,28 +95,28 @@ export const updateAlertDescription: INodeProperties[] = [
 			},
 			{
 				displayName: 'Status',
-				name: 'Status',
+				name: 'status',
 				type: 'options',
 				options: [
 					{
 						name: 'New',
-						value: 'New',
+						value: 'new',
 					},
 					{
 						name: 'In Progress',
-						value: 'InProgress',
+						value: 'inProgress',
 					},
 					{
 						name: 'Resolved',
-						value: 'Resolved',
+						value: 'resolved',
 					},
 				],
-				default: 'New',
+				default: 'new',
 				description: 'The new status of the alert',
 				routing: {
 					send: {
 						type: 'body',
-						property: 'Status',
+						property: 'status',
 					},
 				},
 			},

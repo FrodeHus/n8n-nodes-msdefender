@@ -2,65 +2,73 @@ import { ILoadOptionsFunctions, INodePropertyOptions } from "n8n-workflow";
 
 export async function getDeterminationValues(this: ILoadOptionsFunctions): Promise<INodePropertyOptions[]> {
     const classification = this.getNodeParameter('updateFields.classification') as string;
-    if (classification === 'FalsePositive') {
+    if (classification === 'falsePositive') {
         return [
             {
                 name: 'Clean',
-                value: 'Clean',
+                value: 'clean',
             },
             {
-                name: 'Not Enough Data To Validate',
-                value: 'NoEnoughDataToValidate',
+                name: 'Insufficient Data',
+                value: 'insufficientData',
             },
         ];
-    } else if (classification === 'TruePositive') {
+    } else if (classification === 'truePositive') {
         return [
             {
-                name: 'Compromised Account',
-                value: 'CompromisedAccount',
+                name: 'APT (Advanced Persistent Threat)',
+                value: 'apt',
+            },
+            {
+                name: 'Compromised User',
+                value: 'compromisedUser',
             },
             {
                 name: 'Malicious User Activity',
-                value: 'MaliciousUserActivity',
+                value: 'maliciousUserActivity',
             },
             {
                 name: 'Malware',
-                value: 'Malware',
+                value: 'malware',
             },
             {
-                name: 'Multi Staged Attack',
-                value: 'MultiStagedAttack',
+                name: 'Multi-Staged Attack',
+                value: 'multiStagedAttack',
             },
             {
                 name: 'Other',
-                value: 'Other',
+                value: 'other',
             },
             {
                 name: 'Phishing',
-                value: 'Phishing',
+                value: 'phishing',
+            },
+            {
+                name: 'Security Personnel',
+                value: 'securityPersonnel',
             },
             {
                 name: 'Unwanted Software',
-                value: 'UnwantedSoftware',
+                value: 'unwantedSoftware',
             },
         ];
-    } else if (classification === 'InformationalExpectedActivity') {
+    } else if (classification === 'informationalExpectedActivity') {
         return [
             {
-                name: 'Confirmed Activity',
-                value: 'ConfirmedActivity',
+                name: 'Confirmed User Activity',
+                value: 'confirmedUserActivity',
             },
             {
                 name: 'Line-Of-Business Application',
-                value: 'LineOfBusinessApplication',
+                value: 'lineOfBusinessApplication',
             },
             {
                 name: 'Other',
-                value: 'Other',
+                value: 'other',
             },
             {
                 name: 'Security Testing',
-                value: 'SecurityTesting',
+                value: 'securityTesting',
             },
         ];
     }
